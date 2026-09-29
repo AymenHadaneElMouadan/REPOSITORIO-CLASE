@@ -56,6 +56,15 @@ $libros = [
     ],
     [
         'id'         => 7,
+        'titulo'     => 'El Hobbit',
+        'autor'      => 'J. R. R. Tolkien',
+        'genero'     => 'Fantasia',
+        'paginas'    => 310,
+        'disponible' => true,
+        'fechaAlta'  => '2024-07-10',
+    ],
+    [
+        'id'         => 8,
         'titulo'     => 'Rayuela',
         'autor'      => 'Julio Cortázar',
         'genero'     => 'Novela',
@@ -64,13 +73,23 @@ $libros = [
         'fechaAlta'  => '2024-06-01',
     ],
     [
-        'id'         => 8,
+        'id'         => 9,
         'titulo'     => 'Los pilares de la Tierra',
         'autor'      => 'Ken Follett',
         'genero'     => 'Novela histórica',
         'paginas'    => 1040,
         'disponible' => true,
         'fechaAlta'  => '2024-06-22',
+    ],
+
+    [
+        'id'         => 10,
+        'titulo'     => 'El nombre del viento',
+        'autor'      => 'Patrick Rothfuss',
+        'genero'     => 'Fantasia',
+        'paginas'    => 672,
+        'disponible' => false,
+        'fechaAlta'  => '2024-08-05',
     ],
 ];
 
