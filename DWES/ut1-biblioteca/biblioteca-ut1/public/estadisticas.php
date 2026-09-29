@@ -2,7 +2,6 @@
     
     include './ut1-biblioteca/biblioteca-ut1/src/datos.php';
     include './ut1-biblioteca/biblioteca-ut1/src/funciones.php';
-    
     $numLibros = count($libros);
     echo "Hay $numLibros en total";
 

@@ -2,15 +2,6 @@
 // http://localhost:8000/?tipo=alumno&dias=8&renovacion=si
 
 $prestamo = [
-    [
-
-    ],
-    [
-
-    ],
-    [
-
-    ],
 ];
 $tipo = $_GET['tipo'] ?? 'externo';
 $dias = $_GET['dias'] ?? 0;
