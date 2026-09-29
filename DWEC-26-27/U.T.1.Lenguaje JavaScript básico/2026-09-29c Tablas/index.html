@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h1>Tabla con HTML</h1>
+
+        <h2>La tabla hecha con HTML</h2>
+        <table border="1">
+            <tr>
+                <th>Pais</th>
+                <th>Código</th>
+            </tr>
+            <tr>
+                <td>España</td>
+                <td>ES</td>
+            </tr>
+            <tr>
+                <td>Francia</td>
+                <td>FR</td>
+            </tr>
+        </table>
+
+        <h2>La misma tabla hecha con JavaScript</h2>
+
+        <table id="eTabPais"></table>
+
+        <script>
+            'user strict';
+
+            const nTab = document.getElementById('eTabPais');
+            nTab.setAttribute('border', 1);
+
+            const nTrCabecera = document.createElement('tr');
+            nTab.appendChild(nTrCabecera);
+
+            const nThPais = document.createElement('th');
+            nTrCabecera.appendChild(nThPais);
+            const eTxtPais = document.createTextNode('Pais');
+            nThPais.appendChild(eTxtPais);
+
+            const nThCodigo = document.createElement('th');
+            nTrCabecera.appendChild(nThCodigo);
+            const eTxtCodigo = document.createTextNode('Codigo');
+            nThCodigo.appendChild(eTxtCodigo);
+
+            const nTrEspana = document.createElement('tr');
+            nTab.appendChild(nTrEspana);
+
+            const nThPaisEspana = document.createElement('td');
+            nTrEspana.appendChild(nThPaisEspana);
+            const eTxtPaisEspana = document.createTextNode('Espana');
+            nThPaisEspana.appendChild(eTxtPaisEspana);
+
+            const nThCodigoEspana = document.createElement('td');
+            nTrEspana.appendChild(nThCodigoEspana);
+            const eTxtCodigoEspana = document.createTextNode('ES');
+            nThCodigoEspana.appendChild(eTxtCodigoEspana);
+
+            const nTrFrancia = document.createElement('tr');
+            nTab.appendChild(nTrFrancia);
+
+            const nThPaisFrancia = document.createElement('td');
+            nTrFrancia.appendChild(nThPaisFrancia);
+            const eTxtPaisFrancia = document.createTextNode('Francia');
+            nThPaisFrancia.appendChild(eTxtPaisFrancia);
+
+            const nThCodigoFrancia = doscument.createElement('td');
+            nTrFrancia.appendChild(nThCodigoFrancia);
+            const eTxtCodigoFrancia = document.createTextNode('FR');
+            nThCodigoFrancia.appendChild(eTxtCodigoFrancia);
+
+
+        </script>
+</body>
+</html>
