@@ -1,0 +1,12 @@
+body {
+    background-color: antiquewhite;
+    background-image: url(patron.avif)
+}
+h1 {
+    color: rgb(255, 0, 0);
+}
+ul {
+    background-color: white;
+    list-style-type: square;
+    list-style-image: url(usuarios-alt.png);
+}

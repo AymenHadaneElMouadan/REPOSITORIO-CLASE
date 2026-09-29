@@ -1,0 +1,83 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+}
+
+/* El asterisco representa todas las etiquetas */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  border: solid 5px red;
+  min-height: 100dvh;
+  background-color: antiquewhite;
+}
+
+/*Selectores de etiqueta*/
+h1 {
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+}
+
+/*Selectoress de identificador*/
+#parrafoUno {
+  color: gold !important;
+}
+
+/*Selectores de clase*/
+.parrafo-negrita {
+  font-weight: bold;
+}
+
+p#parrafoUno.parrafo-negrita {
+  color: purple;
+  text-decoration: line-through;
+  text-transform: capitalize;
+}
+
+/*Un espacio entre dos selectores indica descendencia : hijo, nieto. bisnieto */
+
+div p {
+  font-size: 1.5rem;
+}
+
+div > p {
+  color: green;
+}
+/* El operador + representa al hermano siguiente o primer hermano (adjacent sibling) */
+#parrafoDos + p {
+  color: red;
+}
+#parrafoDos + * {
+  color: red;
+}
+
+/* El operador - representa a los hermanos siguientes ()*/
+#parrafoCinco ~ p {
+  color:crimson;
+}
+
+/*El operador [] hace referencia a un atributo*/
+[disabled]{
+  color: lightslategray;
+}
+
+[id=parrafoCinco]{
+  color: blue;
+}
+
+[data-inventado = si]{
+  color:aquamarine  
+}
+
+[data-inventado = no]{
+  color:lightcoral 
+}
+
+select:disabled {
+  display: none;
+}

@@ -1,0 +1,34 @@
+body {
+    background-color: beige;
+}
+h1 {
+    background-color: black;
+    color: beige
+}
+ol {
+    list-style-type: upper-roman;
+    
+}
+p{
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+#parrafo2 {
+    color :red;
+    font-weight: bold;
+}
+
+p#parrafo4{
+    color: green;
+}
+
+.primeros{
+    color: chocolate !important;
+    text-decoration: underline;
+}
+
+.ultimos{
+  
+        
+}

@@ -1,0 +1,20 @@
+:root{
+    font-size: 24px;
+}
+
+body{
+    background-color:cyan;
+}
+
+a{
+    text-decoration: none;
+    color: darkblue;
+}
+/*El acento circunflejo significa que la cadena debe empezar por ese */
+a[href^="http:"]{
+    color:red;
+}
+
+a:not[href^="http:"]{
+    color:red;
+}

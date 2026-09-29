@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            background-color: bisque;
+        }
+        img{
+            width: 16px;
+            display: none;
+        }
+
+        a[href$=pdf] + img{
+            display: unset;         
+        }
+        a[href$=docx] ~ img[src^="./logo-word.png"]{
+            display: unset;         
+        }
+    </style>
+</head>
+<body>
+    <h1>Apuntes</h1>
+    <ul>
+        <li>
+            <a href="https://www.iesramonarcas.es/diw/apuntes.pdf">Apuntes 1</a>
+            <img src="./logo-pdf.jpeg" alt="">
+            <img src="./logo-word.png" alt="">
+        </li>
+        <li>
+            <a href="https://www.iesramonarcas.es/diw/apuntes.txt">Apuntes 2</a>
+            <img src="./logo-pdf.jpeg" alt="">
+            <img src="./logo-word.png" alt="">
+        </li>
+        <li>
+            <a href="https://www.iesramonarcas.es/diw/apuntes.docx">Apuntes 3</a>
+            <img src="./logo-pdf.jpeg" alt="">
+            <img src="./logo-word.png" alt="">
+        </li>
+        <li>
+            <a href="https://www.iesramonarcas.es/diw/apuntes.pdf">Apuntes 4</a>
+            <img src="./logo-pdf.jpeg" alt="">
+            <img src="./logo-word.png" alt="">
+        </li>
+        <li>
+            <a href="https://www.iesramonarcas.es/diw/apuntes.docx">Apuntes 5</a>
+            <img src="./logo-pdf.jpeg" alt="">
+            <img src="./logo-word.png" alt="">
+        </li>
+    </ul>
+</body>
+</html>

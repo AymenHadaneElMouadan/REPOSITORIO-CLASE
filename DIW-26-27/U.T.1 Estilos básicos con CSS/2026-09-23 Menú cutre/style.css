@@ -1,0 +1,56 @@
+:root{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+        /*variables CSS*/
+    --color-oscuro: darkblue;
+    --color-medio: blue;
+    --color-claro: lightblue;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100dvh; /* dynamic viewport height */
+}
+header{
+    background-color: var(--color-oscuro);
+    color:white;
+    text-align: center;
+    font-size: 2rem;
+}
+label{
+    user-select: none;
+}
+input[type="checkbox"]{
+    display: none;
+}
+
+input[type="checkbox"]:not(:checked) + nav{
+    display: none;
+    height: 0;
+    transition-duration: 1s;
+    transition-property: height;
+}
+
+input[type="checkbox"]:checked + nav{
+    display: unset;
+    background-color: var(--color-medio);
+    color: var(--color-claro)
+}
+
+nav a{
+    text-decoration: none;
+    color: var(--color-claro)
+}
+nav {
+    background-color: var(--color-medio);
+    color: inherit;
+}
+img{
+    width: 2rem;
+}
+
