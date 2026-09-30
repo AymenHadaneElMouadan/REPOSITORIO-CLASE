@@ -1,0 +1,19 @@
+
+
+body {
+    min-height: 100dvh;
+}
+ol {
+    font-size: 32px;
+    color: red;
+    list-style-type: upper-roman;
+    margin: 100px;
+}
+ol ul {
+    font-size: 0.5rem;
+    color: green;
+}
+ul ol {
+    font-size: 0.5rem;
+    color: blue
+}
