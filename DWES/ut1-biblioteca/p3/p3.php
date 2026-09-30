@@ -11,7 +11,7 @@ $renovacion = $_GET['renovacion'] ?? 'no';
 $diasMax = match ($tipo) {
     'alumno' => 15,
     'profesor' => 30,
-    'default' => 7 
+    default => 7, 
 };
 
 if ($renovacion === 'si'){
@@ -20,7 +20,7 @@ if ($renovacion === 'si'){
 
 $diasRenovacion = ($diasMax - $dias);
 
-if($diasRenovacion > 1){
+if($diasRenovacion < 1){
     echo 'Correcto';
 } else if ($diasRenovacion === 1){
     echo 'Ultimo Dia';
@@ -29,3 +29,4 @@ if($diasRenovacion > 1){
 } else {
     echo 'Restraso grave';
 }
+

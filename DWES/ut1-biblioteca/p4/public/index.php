@@ -60,7 +60,7 @@ $fechaRevision = $ahora->modify('+30 days');
                 Se ha dado de Alta el : <?= $alta->format('d/m/Y') ?>
                 hace <?= $alta->diff($hoy)->days ?> días
             </li>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
     </ul>
     <p>
         Revision del catalogo :
