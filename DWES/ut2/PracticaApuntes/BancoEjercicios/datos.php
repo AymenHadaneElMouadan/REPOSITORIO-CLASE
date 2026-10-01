@@ -1,0 +1,98 @@
+<?php
+
+declare(strict_types=1);
+
+$libros = [
+    [
+        'id'         => 1,
+        'titulo'     => 'Don Quijote de la Mancha',
+        'autor'      => 'Miguel de Cervantes',
+        'genero'     => 'Novela',
+        'paginas'    => 1120,
+        'disponible' => true,
+        'fechaAlta'  => '2024-01-15',
+    ],
+    [
+        'id'         => 2,
+        'titulo'     => 'Cien años de soledad',
+        'autor'      => 'Gabriel García Márquez',
+        'genero'     => 'Realismo mágico',
+        'paginas'    => 471,
+        'disponible' => true,
+        'fechaAlta'  => '2024-02-03',
+    ],
+    [
+        'id'         => 3,
+        'titulo'     => '1984',
+        'autor'      => 'George Orwell',
+        'genero'     => 'Distopía',
+        'paginas'    => 326,
+        'disponible' => false,
+        'fechaAlta'  => '2024-02-20',
+    ],
+    [
+        'id'         => 4,
+        'titulo'     => 'La sombra del viento',
+        'autor'      => 'Carlos Ruiz Zafón',
+        'genero'     => 'Misterio',
+        'paginas'    => 576,
+        'disponible' => true,
+        'fechaAlta'  => '2024-03-10',
+    ],
+    [
+        'id'         => 5,
+        'titulo'     => 'Fundación',
+        'autor'      => 'Isaac Asimov',
+        'genero'     => 'Ciencia ficción',
+        'paginas'    => 255,
+        'disponible' => true,
+        'fechaAlta'  => '2024-04-05',
+    ],
+    [
+        'id'         => 6,
+        'titulo'     => 'El nombre de la rosa',
+        'autor'      => 'Umberto Eco',
+        'genero'     => 'Novela histórica',
+        'paginas'    => 634,
+        'disponible' => false,
+        'fechaAlta'  => '2024-05-18',
+    ],
+    [
+        'id'         => 7,
+        'titulo'     => 'El Hobbit',
+        'autor'      => 'J. R. R. Tolkien',
+        'genero'     => 'Fantasia',
+        'paginas'    => 310,
+        'disponible' => true,
+        'fechaAlta'  => '2024-07-10',
+    ],
+    [
+        'id'         => 8,
+        'titulo'     => 'Rayuela',
+        'autor'      => 'Julio Cortázar',
+        'genero'     => 'Novela',
+        'paginas'    => 600,
+        'disponible' => true,
+        'fechaAlta'  => '2024-06-01',
+    ],
+    [
+        'id'         => 9,
+        'titulo'     => 'Los pilares de la Tierra',
+        'autor'      => 'Ken Follett',
+        'genero'     => 'Novela histórica',
+        'paginas'    => 1040,
+        'disponible' => true,
+        'fechaAlta'  => '2024-06-22',
+    ],
+
+    [
+        'id'         => 10,
+        'titulo'     => 'El nombre del viento',
+        'autor'      => 'Patrick Rothfuss',
+        'genero'     => 'Fantasia',
+        'paginas'    => 672,
+        'disponible' => false,
+        'fechaAlta'  => '2024-08-05',
+    ],
+];
+
