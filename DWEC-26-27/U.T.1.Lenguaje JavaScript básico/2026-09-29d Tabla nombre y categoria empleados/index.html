@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table, tr, th ,td{
+            border: solid;
+            border-collapse: collapse;
+
+        }
+        tbody tr:nth-child(2n) {
+            background-color: orange
+        }
+        tbody tr:nth-child(2n+1) {
+            background-color: pink;
+        }
+
+
+    </style>
+
+    <script type="module">
+        import { empleados } from './empleados.js';
+        console.log(empleados.length);
+        for (let i in empleados){         
+            const nTbody = document.getElementById('eTbdEmpleados');
+            const nTr = document.createElement('tr');
+            nTbody.appendChild(nTr);
+            nTr.setAttribute('data-empleado', parseInt(i));
+
+            const nTdNumero = document.createElement('td');
+            nTr.appendChild(nTdNumero);
+            const nTxtNumero = document.createTextNode(parseInt(i)+1);
+            nTdNumero.appendChild(nTxtNumero)
+
+            const nTdNombre = document.createElement('td');
+            nTr.appendChild(nTdNombre);
+            const nTxtNombre = document.createTextNode(`${empleados[i].nombre} ${empleados[i].apellido}`);
+            nTdNombre.appendChild(nTxtNombre)
+
+            const nTdCateogria = document.createElement('td');
+            nTr.appendChild(nTdCateogria);
+            const nTxtCateogria = document.createTextNode(`${empleados[i].categoria}`);
+            nTdCateogria.appendChild(nTxtCateogria)
+        }
+    </script>
+
+</head>
+<body>
+    <h1>Tabla con Empleados</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Nombre</th>
+                <th>Categoria</th>
+            </tr>
+        </thead>
+        <tbody id="eTbdEmpleados">
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Número</th>
+                <th>Nombre</th>
+                <th>Categoria</th>
+            </tr>
+        </tfoot>
+    </table>
+    
+</body>
+</html>
