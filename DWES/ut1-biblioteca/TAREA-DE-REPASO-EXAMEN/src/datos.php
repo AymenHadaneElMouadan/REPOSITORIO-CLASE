@@ -1,0 +1,118 @@
+<?php
+declare(strict_types=1);
+
+/**
+ * Catálogo del videoclub.
+ * Cada película es un array asociativo con las claves:
+ * id, titulo, director, genero, duracion (minutos), disponible, fechaAlta (Y-m-d)
+ */
+$peliculas = [
+    [
+        'id'         => 1,
+        'titulo'     => 'Mad Max: Furia en la carretera',
+        'director'   => 'George Miller',
+        'genero'     => 'accion',
+        'duracion'   => 120,
+        'disponible' => true,
+        'fechaAlta'  => '2025-01-10',
+    ],
+    [
+        'id'         => 2,
+        'titulo'     => 'John Wick',
+        'director'   => 'Chad Stahelski',
+        'genero'     => 'accion',
+        'duracion'   => 101,
+        'disponible' => false,
+        'fechaAlta'  => '2025-02-03',
+    ],
+    [
+        'id'         => 3,
+        'titulo'     => 'Gladiator',
+        'director'   => 'Ridley Scott',
+        'genero'     => 'accion',
+        'duracion'   => 155,
+        'disponible' => true,
+        'fechaAlta'  => '2025-03-18',
+    ],
+    [
+        'id'         => 4,
+        'titulo'     => 'Los siete samuráis',
+        'director'   => 'Akira Kurosawa',
+        'genero'     => 'accion',
+        'duracion'   => 207,
+        'disponible' => true,
+        'fechaAlta'  => '2025-05-22',
+    ],
+    [
+        'id'         => 5,
+        'titulo'     => 'Resacón en Las Vegas',
+        'director'   => 'Todd Phillips',
+        'genero'     => 'comedia',
+        'duracion'   => 100,
+        'disponible' => true,
+        'fechaAlta'  => '2025-06-09',
+    ],
+    [
+        'id'         => 6,
+        'titulo'     => 'Superbad',
+        'director'   => 'Greg Mottola',
+        'genero'     => 'comedia',
+        'duracion'   => 113,
+        'disponible' => false,
+        'fechaAlta'  => '2025-07-14',
+    ],
+    [
+        'id'         => 7,
+        'titulo'     => 'El gran Lebowski',
+        'director'   => 'Joel Coen',
+        'genero'     => 'comedia',
+        'duracion'   => 117,
+        'disponible' => true,
+        'fechaAlta'  => '2025-08-01',
+    ],
+    [
+        'id'         => 8,
+        'titulo'     => 'El resplandor',
+        'director'   => 'Stanley Kubrick',
+        'genero'     => 'terror',
+        'duracion'   => 144,
+        'disponible' => true,
+        'fechaAlta'  => '2025-09-12',
+    ],
+    [
+        'id'         => 9,
+        'titulo'     => 'Hereditary',
+        'director'   => 'Ari Aster',
+        'genero'     => 'terror',
+        'duracion'   => 127,
+        'disponible' => false,
+        'fechaAlta'  => '2025-10-30',
+    ],
+    [
+        'id'         => 10,
+        'titulo'     => 'Toy Story',
+        'director'   => 'John Lasseter',
+        'genero'     => 'animacion',
+        'duracion'   => 81,
+        'disponible' => true,
+        'fechaAlta'  => '2025-11-25',
+    ],
+    [
+        'id'         => 11,
+        'titulo'     => 'El viaje de Chihiro',
+        'director'   => 'Hayao Miyazaki',
+        'genero'     => 'animacion',
+        'duracion'   => 125,
+        'disponible' => true,
+        'fechaAlta'  => '2026-01-08',
+    ],
+    [
+        'id'         => 12,
+        'titulo'     => 'Up',
+        'director'   => 'Pete Docter',
+        'genero'     => 'animacion',
+        'duracion'   => 96,
+        'disponible' => false,
+        'fechaAlta'  => '2026-02-20',
+    ],
+];
