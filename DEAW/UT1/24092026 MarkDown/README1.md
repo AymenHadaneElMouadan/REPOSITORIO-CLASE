@@ -46,5 +46,17 @@ Si desea obtener mas informacion visita la documentacion oficial tanto de [NODEJ
 ### Variables de entorno 
 
 
+| 3 tiendas de Ropa | Prendas Habituales |
+| --- | --- |
+| HYM | Pantalones |
+| Pull y Bear | Sudaderas |
+| Primark | Calcetines |
+
+
+Advertencia de backups:
+>Tener cuidado a la hora de manejar los archivos 
+
+
+<!-- Comnetario oculto para el desarrollador -->
 
 
