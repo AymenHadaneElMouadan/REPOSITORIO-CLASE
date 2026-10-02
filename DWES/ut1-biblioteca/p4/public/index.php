@@ -6,6 +6,7 @@ require_once __DIR__ . '/../src/funciones.php';
 
 date_default_timezone_set('Europe/Madrid');
 
+
 $genero = trim($_GET['genero'] ?? '');
 $soloDisponibles = ($_GET['disponible'] ?? '') === '1';
 
@@ -25,6 +26,10 @@ $masLargo = obtenerLibroMasLargo($resultados);
 $ahora = new DateTimeImmutable('now');
 $hoy = new DateTimeImmutable('today');
 $fechaRevision = $ahora->modify('+30 days');
+
+function esc(string $texto){
+    return htmlspecialchars($texto, ENT_QUOTES | ENT_SUBSTITUTE , 'UTF-8'  );
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,8 +46,8 @@ $fechaRevision = $ahora->modify('+30 days');
 
     <p>Libro con más páginas:
         <?php if ($masLargo !== null): ?>
-            <?= htmlspecialchars($masLargo['titulo']) ?>
-            (<?= htmlspecialchars($masLargo['autor']) ?>, <?= $masLargo['paginas'] ?> páginas)
+            <?= esc($masLargo['titulo']) ?>
+            (<?= esc($masLargo['autor']) ?>, <?= $masLargo['paginas'] ?> páginas)
         <?php endif; ?>
     </p>
 
@@ -51,20 +56,22 @@ $fechaRevision = $ahora->modify('+30 days');
         <?php foreach ($resultados as $libro): ?>
             <?php $alta = new DateTimeImmutable($libro['fechaAlta']); ?>
             <li>
-                <?= htmlspecialchars($libro['titulo']) ?>
-                <?= htmlspecialchars($libro['autor']) ?>
-                <?= htmlspecialchars($libro['genero']) ?>
+                <?= esc($libro['titulo']) ?>
+                <?= esc($libro['autor']) ?>
+                <?= esc($libro['genero']) ?>
                 <?= $libro['paginas'] ?> páginas
                 <?= $libro['disponible']?>
+                
                 <br>
                 Se ha dado de Alta el : <?= $alta->format('d/m/Y') ?>
                 hace <?= $alta->diff($hoy)->days ?> días
             </li>
+
         <?php endforeach; ?>
     </ul>
     <p>
         Revision del catalogo :
-        <?= htmlspecialchars($fechaRevision->format('d/m/Y H:i')) ?>
+        <?= esc($fechaRevision->format('d/m/Y H:i')) ?>
     </p>
 </body>
 </html>
