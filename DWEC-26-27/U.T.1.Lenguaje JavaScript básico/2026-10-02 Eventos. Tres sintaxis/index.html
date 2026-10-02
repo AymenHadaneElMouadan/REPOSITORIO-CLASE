@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+<body>
+    <p onclick="alert('Has clickeado en el parrafo 1.')">Este es el párrafo 1</p>
+    
+    <p onmouseover="mostrarMensajeParrafoDos()">Este es el párrafo 2</p>
+
+    <p onmouseover="console.warn('Has entrado en el parrafo 3.')"
+       onmouseout="console.error('Has salido del parrafo 3')"    
+    >
+       Este es el parrafo 3.
+    </p>
+
+    <p id="parrafo4">Este es el parrafo 4.</p>
+
+    <script>
+        function mostrarMensajeParrafoDos(){
+            console.log('Has entrado en el párrafo 2.');
+        }
+        // JSDoc
+        /** 
+         * @param {numbre} edad
+         * @returns { undefined }
+         */
+        function mostrarMensajeParrafoCuatro(){
+            console.log('Has entrado en el párrafo 4.');
+        }
+
+        const nParrafo4 = document.getElementById('eParCautro');
+        nParrafo4.onclick = mostrarMensajeParrafoCuatro;
+
+
+    </script>
+</body>
+</html>

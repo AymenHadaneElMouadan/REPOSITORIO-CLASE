@@ -12,6 +12,10 @@
         for(const ciudad of ciudades){
             const nInputCiudad = document.createElement('input');
             nForm.appendChild(nCheckbox);
+            nCheckbox.setAttribute('type', 'radio');
+            nCheckbox.setAttribute('name', ciudad);
+            nCheckbox.setAttribute('id', `eChk${ciudad.codigoPostal}`);
+            nCheckbox.setAttribute('value')
         }
 
         
