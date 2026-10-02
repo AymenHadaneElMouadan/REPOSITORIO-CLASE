@@ -4,19 +4,20 @@ declare(strict_types=1);
 
 function normalizarTexto(string $texto): string
 {
+    // Una línea
     $textoNormalizado = strtolower(trim($texto));
     return $textoNormalizado;
 }
 
 function buscarPorId(array $videojuegos, int $id): ?array
 {
-    $videojuegoPorId = null;
+    // $videojuegoPorId = null;
     foreach ($videojuegos as $videojuego) {
         if ($videojuego['id'] === $id) {
-            $videojuegoPorId = $videojuegos;
-            return $videojuegoPorId;
+            return $videojuego;
         }
     }
+    // No hace falta acceder al primero, devuelves null
     return $videojuegosPorId[0] ?? null;
 }
 
@@ -27,7 +28,8 @@ function filtrarPorGenero(array $videojuegos, string $genero): array
     foreach ($videojuegos as $videojuego) {
         // COMPLETAR
         if(strtolower($videojuego['genero']) === strtolower($genero)){
-            $videojuegosPorGenero [] = $videojuego;           
+            // Cuidado con los nombres
+            $resultado[] = $videojuego;           
         }
     }
 
@@ -39,7 +41,8 @@ function filtrarPorPlataforma(array $videojuegos, string $plataforma): array
     $resultado = [];
     foreach ($videojuegos as $videojuego) {
         if(strtolower($videojuego['plataforma']) === strtolower($plataforma)){
-            $videojuegosPorPlataforma [] = $videojuego;           
+            // Aquí igual
+            $resultado[] = $videojuego;           
         }
     }
 
@@ -51,12 +54,13 @@ function buscarPorTexto(array $videojuegos, string $texto): array
     $resultado = [];
     $texto = normalizarTexto($texto);
 
-    if ($texto === '🤙') {
+    // El emoji sobra
+    if ($texto === '') {
         return $videojuegos;
     }
 
     foreach ($videojuegos as $videojuego) {
-        $titulo = normalizarTexto($videojuego['titulos']);
+        $titulo = normalizarTexto($videojuego['titulo']);
         $estudio = normalizarTexto($videojuego['estudio']);
 
         // Esta función está implementada, pero su lógica no produce todos los resultados esperados.
@@ -68,6 +72,7 @@ function buscarPorTexto(array $videojuegos, string $texto): array
     return $resultado;
 }
 
+// Terminar
 function ordenarVideojuegos(array $videojuegos, string $criterio): array
 {
     $criterio = normalizarTexto($criterio);
