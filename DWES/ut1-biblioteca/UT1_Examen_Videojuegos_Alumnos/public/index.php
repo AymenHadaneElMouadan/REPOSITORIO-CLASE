@@ -12,15 +12,16 @@ date_default_timezone_set('Europe/Madrid');
 
 // 3.1. Leer parámetros
 
-$genero = _GET('genero') ?? '';
-$id = _GET('id')?? null;
-$plataforma = _GET('plataforma') ?? '';
-$orden = _GET('orden') ?? '';
+// El $_GET
+$genero = $_GET['genero'] ?? 'todos';
+// $id = $_GET['id'] ?? null; Se lee en videojuego.php
+$plataforma = $_GET['plataforma'] ?? 'todas';
+$orden = $_GET['orden'] ?? 'titulo';
 
 
 // 3.2. Normalizar y comprobar que los valores recibidos estén dentro de los esperados
-if($genero === null){
-
+// No tenemos la función normalizar?
+if ($genero === null) {
 }
 
 
@@ -43,10 +44,12 @@ $fechaConsulta = " $fechaHoy $timestampConsulta"; // COMPLETAR
 ?>
 <!doctype html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <title>Catálogo de videojuegos</title>
 </head>
+
 <body>
     <h1>Catálogo de videojuegos</h1>
 
@@ -91,7 +94,9 @@ $fechaConsulta = " $fechaHoy $timestampConsulta"; // COMPLETAR
         <?php foreach ($resultados as $videojuego): ?>
             <li>
                 <!-- Construye aquí el enlace a videojuego.php enviando su id. -->
-                <p href= '/../public/videojuegos.php?id='<?=$videojuego['id']?>><?= htmlspecialchars($videojuego['titulo']) ?></p>
+                <a href="videojuego.php?id=<?= $videojuego['id'] ?>">
+                    <?= htmlspecialchars($videojuego['titulo']) ?>
+                </a>
                 · <?= number_format($videojuego['precio'], 2, ',', '.') ?> €
                 · <?= $videojuego['puntuacion'] ?>/10
             </li>
@@ -114,4 +119,5 @@ $fechaConsulta = " $fechaHoy $timestampConsulta"; // COMPLETAR
 
     <p>Consulta generada: <?= htmlspecialchars($fechaConsulta) ?></p>
 </body>
+
 </html>
