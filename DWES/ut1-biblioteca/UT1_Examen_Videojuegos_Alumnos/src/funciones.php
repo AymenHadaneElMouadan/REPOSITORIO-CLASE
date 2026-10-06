@@ -17,7 +17,7 @@ function buscarPorId(array $videojuegos, int $id): ?array
             return $videojuegoPorId;
         }
     }
-    return $videojuegosPorId[0] ?? null;
+    return null;
 }
 
 function filtrarPorGenero(array $videojuegos, string $genero): array
@@ -26,8 +26,8 @@ function filtrarPorGenero(array $videojuegos, string $genero): array
     $resultado = [];
     foreach ($videojuegos as $videojuego) {
         // COMPLETAR
-        if(strtolower($videojuego['genero']) === strtolower($genero)){
-            $videojuegosPorGenero [] = $videojuego;           
+        if(normalizarTexto($videojuego['genero']) === normalizarTexto($genero)){
+            $resultado [] = $videojuego;           
         }
     }
 
@@ -39,10 +39,9 @@ function filtrarPorPlataforma(array $videojuegos, string $plataforma): array
     $resultado = [];
     foreach ($videojuegos as $videojuego) {
         if(strtolower($videojuego['plataforma']) === strtolower($plataforma)){
-            $videojuegosPorPlataforma [] = $videojuego;           
+            $resultado [] = $videojuego;           
         }
     }
-
     return $resultado;
 }
 
@@ -51,15 +50,10 @@ function buscarPorTexto(array $videojuegos, string $texto): array
     $resultado = [];
     $texto = normalizarTexto($texto);
 
-    if ($texto === '🤙') {
-        return $videojuegos;
-    }
-
     foreach ($videojuegos as $videojuego) {
         $titulo = normalizarTexto($videojuego['titulos']);
         $estudio = normalizarTexto($videojuego['estudio']);
-
-        // Esta función está implementada, pero su lógica no produce todos los resultados esperados.
+       
         if (str_contains($titulo, $texto) || str_contains($estudio, $texto)) {
             $resultado[] = $videojuego;
         }
@@ -73,14 +67,18 @@ function ordenarVideojuegos(array $videojuegos, string $criterio): array
     $criterio = normalizarTexto($criterio);
     $cantidad = count($videojuegos);
 
-    for ($i = 0; $i < $cantidad - $i; $i++) {
-        for ($j = 0; $j < $cantidad - 1; $j++) {
-            $actual = $videojuegos[$i];
+    for ($i = 0; $i < $cantidad; $i++) {
+        for ($j = 0; $j < $cantidad; $j++) {
+            $actual = $videojuegos[$j];
             $siguiente = $videojuegos[$j + 1];
 
-            $intercambiar = false;
+            $intercambiar = match($criterio){
+                'precio' => $actual['precio'] > $siguiente['precio'],
+                'puntuacion' => $actual['puntuacion'] < $siguiente['puntuacion'],
+                default => $actual['titulo'] > $siguiente['titulo']
+            };
 
-            if ($actual < $siguiente) {
+            if ($intercambiar) {
                 $temporal = $videojuegos[$j];
                 $videojuegos[$j] = $videojuegos[$j + 1];
                 $videojuegos[$j + 1] = $temporal;

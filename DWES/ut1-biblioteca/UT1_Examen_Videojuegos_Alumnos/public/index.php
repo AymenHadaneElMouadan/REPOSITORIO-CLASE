@@ -12,16 +12,19 @@ date_default_timezone_set('Europe/Madrid');
 
 // 3.1. Leer parámetros
 
-$genero = _GET('genero') ?? '';
-$id = _GET('id')?? null;
-$plataforma = _GET('plataforma') ?? '';
-$orden = _GET('orden') ?? '';
+$genero = normalizarTexto($_GET('genero')) ?? '';
+$plataforma = normalizarTexto($_GET('plataforma')) ?? '';
+$busqueda = normalizarTexto($_GET('q')) ?? '';
+$orden = normalizarTexto($_GET('orden')) ?? '';
 
 
-// 3.2. Normalizar y comprobar que los valores recibidos estén dentro de los esperados
-if($genero === null){
-
+if (!array_key_exists($plataforma, $plataformas)){
+    $plataforma = 'todas';
 }
+if (!in_array($orden, ['titulo', 'precio', 'puntuacion'], true)){
+    $orden = 'titulo';
+}
+
 
 
 // 3.3. Filtros
@@ -91,7 +94,7 @@ $fechaConsulta = " $fechaHoy $timestampConsulta"; // COMPLETAR
         <?php foreach ($resultados as $videojuego): ?>
             <li>
                 <!-- Construye aquí el enlace a videojuego.php enviando su id. -->
-                <p href= '/../public/videojuegos.php?id='<?=$videojuego['id']?>><?= htmlspecialchars($videojuego['titulo']) ?></p>
+                <a href= "/../public/videojuegos.php?id=<?=$videojuego['id']?>"><?= htmlspecialchars($videojuego['titulo']) ?></a>
                 · <?= number_format($videojuego['precio'], 2, ',', '.') ?> €
                 · <?= $videojuego['puntuacion'] ?>/10
             </li>
