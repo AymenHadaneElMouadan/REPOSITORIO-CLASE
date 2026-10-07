@@ -12,6 +12,7 @@ date_default_timezone_set('Europe/Madrid');
 
 // 3.1. Leer parámetros
 
+
 // El $_GET
 $genero = $_GET['genero'] ?? 'todos';
 // $id = $_GET['id'] ?? null; Se lee en videojuego.php
@@ -22,7 +23,21 @@ $orden = $_GET['orden'] ?? 'titulo';
 // 3.2. Normalizar y comprobar que los valores recibidos estén dentro de los esperados
 // No tenemos la función normalizar?
 if ($genero === null) {
+=======
+$genero = normalizarTexto($_GET('genero')) ?? '';
+$plataforma = normalizarTexto($_GET('plataforma')) ?? '';
+$busqueda = normalizarTexto($_GET('q')) ?? '';
+$orden = normalizarTexto($_GET('orden')) ?? '';
+
+
+if (!array_key_exists($plataforma, $plataformas)){
+    $plataforma = 'todas';
 }
+if (!in_array($orden, ['titulo', 'precio', 'puntuacion'], true)){
+    $orden = 'titulo';
+
+}
+
 
 
 // 3.3. Filtros

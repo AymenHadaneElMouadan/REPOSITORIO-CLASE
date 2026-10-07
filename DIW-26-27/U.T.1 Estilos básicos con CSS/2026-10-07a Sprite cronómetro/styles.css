@@ -1,0 +1,38 @@
+:root{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  /*Variables CSS*/
+  --heigth: 90px;
+  --width:calc(900px / 10);
+}
+
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100dvh;
+}
+.numero{
+  width: var(--width);
+  height: var(--heigth);
+  border: solid 2px red;
+  background-image: url(./sprite.png);
+  background-repeat: no-repeat;
+  /*background-position-x: calc(var(--width) * -9); */
+  /*background-position-x: -810px;*/
+
+}
+
+.numero2{
+  width: var(--width);
+  height: var(--heigth);
+  border: solid 2px green;
+  background-image: url(./sprite.png);
+  background-repeat: no-repeat;
+  /*background-position-x: calc(var(--width) * -9); */
+  /*background-position-x: -810px;*/
+
+}

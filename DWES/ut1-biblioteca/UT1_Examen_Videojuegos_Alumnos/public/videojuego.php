@@ -6,6 +6,7 @@ require_once __DIR__ . ('/../src/datos.php');
 $id = $_GET['id'] ?? 0;
 $id = (int) $id;
 
+$videojuego = buscarPorId($videojuegos, $id);
 
 foreach ($videojuegos as $videojuego) {
     if ($videojuego === null) {
