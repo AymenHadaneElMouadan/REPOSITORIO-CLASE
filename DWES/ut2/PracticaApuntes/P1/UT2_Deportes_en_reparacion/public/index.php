@@ -6,13 +6,11 @@ declare(strict_types=1);
 require_once __DIR__ . '/../src/actividades.php';
 require_once __DIR__ . '/../src/deportes.php';
 
-function e(string $valor): string
-{
+function e(string $valor): string{
     return htmlspecialchars($valor, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
-function entrada(string $clave, string $defecto = ''): string
-{
+function entrada(string $clave, string $defecto = ''): string{
     return isset($_GET[$clave]) && is_string($_GET[$clave]) ? $_GET[$clave] : $defecto;
 }
 

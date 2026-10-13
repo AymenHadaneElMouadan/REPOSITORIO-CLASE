@@ -35,16 +35,16 @@
             <label>
                 Orden
                 <select name="orden">
-                    <option value="nombre" <?= $orden === 'nombre' ? 'selected' : '' ?>>
+                    <option value="nombre" <?= $orden ==='nombre' ? 'selected' : '' ?>>
                         Nombre A–Z
                     </option>
-                    <option value="libres" <?= $orden === 'libres' ? 'selected' : '' ?>>
+                    <option value="libres" <?= $orden ==='libres' ? 'selected' : '' ?>>
                         Plazas libres de menor a mayor
                     </option>
                 </select>
             </label>
             <label class="checkbox">
-                <input type="checkbox" name="disponibles" value="1" <?= $conPlazas ? 'checked' : '' ?>>
+                <input type="checkbox" name="disponibles" value="1" <?=$conPlazas ? 'checked' : '' ?>>
                 Solo con plazas
             </label>
             <button>Consultar</button>
