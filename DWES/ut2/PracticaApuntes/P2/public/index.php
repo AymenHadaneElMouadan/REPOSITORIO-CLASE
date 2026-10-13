@@ -14,41 +14,46 @@ function e(string $valor): string
 function entrada(string $clave, string $defecto = ''): string
 {
     // TODO E1: leer $_GET con isset e is_string; devolver el defecto en otro caso.
-    return $defecto;
+    return isset($_GET[$clave]) && is_string($_GET[$clave]) ? $_GET[$clave] : $defecto;
 }
 
 $equipos = prepararEquipos($equipos, $prestamos);
 
 // TODO E2: sustituir estos valores provisionales por la lectura de los controles GET.
-$texto = '';
-$categoria = '';
-$soloDisponibles = false;
-$orden = 'nombre';
-$id = '';
-$codigo = '';
+$texto = entrada('q');
+$categoria = entrada('categoria');
+$soloDisponibles = entrada('disponibles') === '1';
+$orden = entrada('orden');
+$id = entrada('id');
+$codigo = entrada('codigo');
 
 $categorias = obtenerCategorias($equipos);
-$aviso = '';
+$aviso = entrada('codigo');
 
 // TODO E3: validar orden y categoria; aplicar los valores por defecto y el aviso indicado.
-
+if (!categoriaValida($categoria, $categorias)) {
+    $aviso = 'La categoría seleccionada no es válida.';
+    $categoria = '';
+}
 // TODO E4: llamar al filtrado y ordenación; preparar el resumen y las etiquetas del listado.
-$visibles = [];
+$visibles = ordenarEquipos(
+    filtrarEquipos($equipos, $texto, $categoria, $soloDisponibles),
+    $orden
+);
 $resumen = resumirEquipos($visibles);
-$etiquetas = [];
+$etiquetas = generarEtiquetas($visibles, prefijo: 'Equipo: ');
 
 $seleccionado = null;
-$avisoFicha = '';
+$avisosFicha = '';
 
 if ($id !== '') {
-    // TODO E5: validar el id con filter_var y FILTER_VALIDATE_INT, mínimo 1.
-    $idEntero = false;
-
+    $idEntero = filter_var($id, FILTER_VALIDATE_INT, [
+        'options' => ['min_range' => 1],
+    ]);
     if ($idEntero === false) {
-        $avisoFicha = 'Indica un id entero positivo.';
+        $avisosFicha = 'Indica un id entero positivo.';
     } else {
         $seleccionado = buscarPorId($equipos, $idEntero);
-
         if ($seleccionado === null) {
             $avisoFicha = 'No existe el equipo con ese id.';
         }
