@@ -33,7 +33,7 @@ function plazasOcupadas(array $reservas, int $actividadId): int
     $confirmadas = array_filter(
         $reservas,
         fn (array $a): bool =>
-            $a['actividad'] === $actividadId && $a['estado'] === 'confirmada',
+        $a[$actividadId] === $actividadId && $a['estado'] === 'confirmada',     
     );
     return array_reduce(
         $confirmadas,
@@ -61,21 +61,13 @@ function filtrarActividades(
     string $texto,
     string $categoria,
     bool $soloConPlazas
-): array
-{
-    // TODO 3: filtrar por nombre, categoría y plazas libres.
-    if($texto === '' && $categoria === ''){
-        return $actividades;
-    }
-    if(!$soloConPlazas){
-        return $actividades;
-    }
+): array{
     return array_filter(
-        $actividades,
+        $actividades, 
         fn(array $a): bool =>
-        str_contains(normalizarBusqueda($a['texto']), normalizarBusqueda($texto)) &&
-        str_contains(normalizarBusqueda($a['categoria']), normalizarBusqueda($categoria)) &&
-        $soloConPlazas
+            str_contains(normalizarBusqueda($a['nombre']), normalizarBusqueda($texto)) &&
+            ($categoria === '' || normalizarBusqueda($a['categoria']) === normalizarBusqueda($categoria)) &&
+            (!$soloConPlazas || $a['libres'] > 0) 
     );
 }
 
@@ -85,7 +77,9 @@ function ordenarActividades(array $actividades, string $orden): array
     usort(
         $actividades,
         fn(array $a, array $b): int =>
-            ($a[$orden] <=> $b[$orden]) === 0 ? $a['id'] <=> $b['id'] : $a[$orden] <=> $b[$orden], 
+        $orden === 'libres' ?
+            (($a[$orden] <=> $b[$orden]) ?: $a['id'] <=> $b['id'])
+            : ((normalizarBusqueda($a[$orden]) <=> normalizarBusqueda($b[$orden])) ?: $a['id'] <=> $b['id']), 
     );
     return $actividades;
 }
@@ -149,22 +143,23 @@ function buscarPorId(array $actividades, int|string $id): ?array
     // TODO 10: buscar por id en todas las actividades; id no es índice.
     return array_find(
         $actividades,
-        fn(array $a): bool => $a['id'] === normalizarId($id);
+        fn(array $a): bool => $a['id'] === normalizarId($id)
     );
 }
 
 function monitorVisible(?string $monitor): string
 {
     // TODO 11: resolver el caso de monitor null.
-    return '';
+    
+    return $monitor ?? 'Monitor Pendiente';
 }
 
 function inicioNombre(string $nombre): string
 {
-    return substr(limpiarEspacios($nombre), 0, 3);
+    return mb_substr(limpiarEspacios($nombre), 0, 3, 'UTF-8');
 }
 
 function codigoValido(string $codigo): bool
 {
-    return preg_match('/DEP-[0-9]+-[0-9]+/', $codigo) === 1;
+    return preg_match('/^DEP-[0-9]{4}-[0-9]{4}$/', $codigo) === 1;
 }

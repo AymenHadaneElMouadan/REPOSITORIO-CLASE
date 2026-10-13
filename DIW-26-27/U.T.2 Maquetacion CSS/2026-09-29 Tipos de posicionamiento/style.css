@@ -1,0 +1,53 @@
+:root{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    --color-claro: lightgreen;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;   
+}
+
+body {
+    min-height: 100dvh;
+    background-color: var(--color-claro);
+}
+.anuncio{
+    background-color: var(--color-claro);
+    color: white;
+    display: inline-block;
+    padding: 1rem;
+    position: fixed;
+    /* z-index: -1; */
+    right: 25px;
+    top: 50px;
+}
+.anuncio > img  {
+    width: 100px;
+}
+
+.cerrar-anuncio {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.anuncio-daw {
+    background-color: orange;
+    display: inline-block;
+    width: 370px;
+    padding: 0.5rem;
+    text-align: center;
+    text-wrap: balance;
+    position: relative;
+    left: 100px;
+    top: 100px;
+}
+.anuncio-daw img {
+    width: 100px;
+}
+body{
+    position: relative;
+}

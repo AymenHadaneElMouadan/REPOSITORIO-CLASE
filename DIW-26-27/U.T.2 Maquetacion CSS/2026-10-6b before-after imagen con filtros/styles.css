@@ -1,0 +1,44 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  --ancho: 1920px;
+  --alto: 1080px;
+  --un-tercio: calc(var(--ancho)/3);
+}
+
+::before,
+::after{ 
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100dvh;
+  background-color: bisque;
+}
+.coche{
+  width: var(--ancho);
+  height: var(--alto);
+  border: solid;
+  background-image: url(volkswagen_golf.png);
+  background-size: cover;
+  position: relative;
+}
+
+.coche::before, .coche::after{
+  content: '';
+  position: absolute;
+  background-size: inherit;
+  width: var(--un-tercio);
+  height: inherit;
+  background-image: inherit;
+}
+
+.coche::before{
+  filter: invert();
+}
+.coche::after{
+  filter: sepia();
+  right: 0;
+  background-position-x: right;
+}
