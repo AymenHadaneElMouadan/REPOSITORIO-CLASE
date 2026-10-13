@@ -1,0 +1,49 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+
+::before,
+::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+}
+body {
+  font-family: sans-serif;
+  margin: 20px;
+}
+
+section {
+  border: solid;
+  height: 400px;
+  margin: 25px;
+
+  display: flex;
+  flex-direction: row;
+  /* direcion principal*/
+  justify-content: space-evenly;
+  /* direccion secundaria*/
+  align-items:center ;
+} 
+
+article {
+  border: solid 2px red;
+}
+
+article:first-child{
+  align-self: flex-start;
+}
+
+article:last-child {
+  align-self: flex-end;
+}
+
+article:nth-child(2){
+  align-self: flex-end;
+  font-size: 2rem;
+}
+
+article:nth-child(3){
+  align-self: baseline;
+}

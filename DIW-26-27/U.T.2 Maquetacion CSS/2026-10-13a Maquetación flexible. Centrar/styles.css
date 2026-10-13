@@ -1,0 +1,25 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+
+*, *::before, *::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+}
+body {
+  height: 100dvh;
+  display: flex;
+  /*Por defecto, la direccion principal es row, así que la secundaria es column*/
+  flex-direction: column;
+  /*distribcion en la direccion principal*/
+  justify-content: center;
+  /*distribucion en la direccion secundaria*/
+  align-items: center;
+}
+.caja{
+  background-color: blue;
+  width: 100px;
+  aspect-ratio: 1;
+}
