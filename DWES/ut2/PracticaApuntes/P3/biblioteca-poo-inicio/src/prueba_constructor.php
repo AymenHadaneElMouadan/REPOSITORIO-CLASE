@@ -9,8 +9,9 @@ require_once __DIR__ . '/Libro.php';
 $autor1 = new Autor('Frank Herbert');
 $categoria1 = new Categoria('Ciencia Ficcion');
 
-echo "Nombre del autor 1 : $autor1->nombre. \n";
-echo "Categoria 1 : $categoria1->nombre";
+    /* 
+    echo "Nombre del autor 1 : $autor1->nombre. \n";
+    echo "Categoria 1 : $categoria1->nombre"; */
 
 
 
@@ -26,11 +27,20 @@ echo "Categoria 1 : $categoria1->nombre";
 
     echo "Libro 2 esta disponible?: $libro2->disponible"; */
 
-$libro1 = new Libro(10, 'Dune', 412, $autor1, $categoria1);
 
-echo "Titulo del libro $this->titulo";
-echo "Numero de paginas $this->paginas";
+    /* $libro1 = new Libro(10, 'Dune', 412, $autor1, $categoria1);
+
+    echo "Titulo del libro $this->titulo";
+    echo "Numero de paginas $this->paginas"; */
 
 
 // Fase 3.2: sustituye las pruebas anteriores por un Libro construido
 // con las variables $titulo y $paginas. Muestra ambas propiedades.
+
+$paginas = -19;
+$titulo = '    ';
+
+$libro1 = new Libro(2, $titulo, $paginas, $autor1 , $categoria1);
+
+echo "Titulo del libro: $libro1->titulo\n";
+echo "Numero de paginas: $libro1->paginas";
