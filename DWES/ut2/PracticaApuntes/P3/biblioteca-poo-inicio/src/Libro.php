@@ -33,7 +33,8 @@ final class Libro
     }
     function ficha(): string{
         $autor = $this->autor?->nombre ?? 'Sin Titulo';
-        $fichaCompleta = "$this->titulo: $this->titulo / $autor / $this->categoria / $this->paginas";
+        $categoria = $this->categoria->nombre;
+        $fichaCompleta = "$this->titulo / $autor / $categoria / $this->paginas paginas";
         return $fichaCompleta;
     }
 }

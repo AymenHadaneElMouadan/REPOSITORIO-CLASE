@@ -25,34 +25,90 @@ foreach ($datos as $registro) {
 // Fase 5: realiza aquí las comprobaciones de préstamos e identidad.
 // Añade textos a $mensajes; la vista los mostrará debajo del catálogo.
 // Termina devolviendo Dune para conservar el estado inicial del catálogo.
-$mensajes[] =
-    $dune = $libros[0]; 
-    $dune['id'];
+$mensajes = [] ;
+$dune = $libros[0];
+$otro = [];
+foreach($libros as $libro){
+    if($libro->titulo === '1984'){
+        $otro = $libro;
+    }
+}
 
- ;
+
+/* $mensajes[] = 'Dune Disponible: '.($dune->disponible ? 'true' : 'false');
+$mensajes[] = 'Otro Disponible: '.($otro->disponible ? 'true' : 'false');
+
+$dune->prestar();
+
+$mensajes[] = 'Dune Disponible (Prestado): '.($dune->disponible ? 'true' : 'false');
+$mensajes[] = 'Otro Disponible: '.($otro->disponible ? 'true' : 'false');
+
+$dune->devolver();
+
+$mensajes[] = 'Dune Disponible (Devuelto): '.($dune->disponible ? 'true' : 'false');
+$mensajes[] = 'Otro Disponible: '.($otro->disponible ? 'true' : 'false');
+
+$fichaDune = $dune->ficha();
+$fichaOtro = $otro->ficha();
+
+$mensajes[] = "Ficha Completa: $fichaDune";
+$mensajes[] = "Ficha Completa: $fichaOtro";
+     */
+
+$alias = $dune;
+$alias->prestar();
+$mensajes[] = 'Dune Disponible: '.($dune->disponible ? 'true' : 'false');
+$mensajes[] = 'Alias Disponible: '.($alias->disponible ? 'true' : 'false');
+
+$mensajes[] = 'Alias y dune son iguales: '.($dune === $alias  ? 'true' : 'false');
+
+$autor = new Autor('Frank Herbert');
+$categoria = new Categoria('Ciencia Ficción');
+$duneCopia = new Libro(10, 'Dune', 412, $autor, $categoria, true);
+
+$mensajes[] = 'CopiaDune y dune son iguales: '.($dune === $duneCopia  ? 'true' : 'false');
+
+$dune->devolver();
+
+$mensajes[] = 'Alias Disponible: '.($alias->disponible ? 'true' : 'false');
+$mensajes[] = 'Dunelias Disponible: '.($dune->disponible ? 'true' : 'false');
+
 
 // Lectura del formulario facilitada. La búsqueda conserva el texto escrito.
 $entrada = $_GET['q'] ?? '';
-$entradaBusqueda = is_string(mb_strtolower(trim(($entrada)), 'UTF-8')) ? $entrada : '';
-$soloDisponibles = isset($_GET['disponibles']);
+$entradaBusqueda = is_string($entrada) ? $entrada : '';
+$soloDisponibles = isset($_GET['disponibles']);is_string($entrada) ? $entrada : '';
 $ordenEntrada = $_GET['orden'] ?? 'paginas';
 $orden = is_string($ordenEntrada)
     && in_array($ordenEntrada, ['paginas', 'titulo'], true)
     ? $ordenEntrada : 'paginas';
 
 // Fase 6.1: normaliza la búsqueda y filtra con array_filter.
-$busqueda = $entradaBusqueda;
-$visibles = $libros;
+$busqueda = mb_strtolower(trim(($entradaBusqueda)), 'UTF-8');
+$visibles = array_filter($libros, fn(Libro $libro) => str_contains($libro->titulo, $busqueda) && (!$soloDisponibles || $libro->disponible));
+
 
 // Fase 6.2: ordena $visibles mediante usort y <=>.
-
+usort($libros, fn(Libro $a, Libro $b) => 
+    $orden === 'paginas'? $a->paginas <=> $b->paginas : $a->titulo <=> $a->titulo);
 // Fase 6.3: resumen del catálogo completo, antes de filtrar.
 // Completa disponibles con array_filter y paginas con array_reduce.
-$resumen = ['total' => count($libros), 'disponibles' => 0, 'paginas' => 0];
+$resumen = ['total' => count($libros), 
+            'disponibles' => count(array_filter($libros, fn(Libro $libro) => $libro->disponible )), 
+            'paginas' => array_reduce($libros, fn(int $suma, Libro $libro)=> $suma + $libro->paginas, 0)];
 
 // Fase 6.3: crea las fichas de los libros visibles con array_map.
+
 $etiquetas = [];
+$etiquetas = array_map(fn(Libro $libro) => $libro->ficha(), $visibles);
+
+
 
 // Fase 6.3: busca los ids 30 y 999 con array_find y añade mensajes.
+
+$mensajes[] = 'Busqueda por Id (30): '.array_find($libros, fn(Libro $libro) => $libro->id === 30)?->titulo ?? 'Id No Encontrado';
+$mensajes[] = 'Busqueda por Id (999): '.array_find($libros, fn(Libro $libro) => $libro->id === 999)?->titulo ?? 'Id No Encontrado';
+
+
 
 require __DIR__ . '/../vista/catalogo.php';
