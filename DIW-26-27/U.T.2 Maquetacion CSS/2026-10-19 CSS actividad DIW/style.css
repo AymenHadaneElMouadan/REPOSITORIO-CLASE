@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100dvh;
+    width: 1280px;
+    margin: auto;
+    background-color: wheat;
+
+}
+
+section#tSctProducts {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    overflow-x: scroll;
+    background-color: burlywood;
+    /* flex-wrap: wrap; Permite mostrar todas las imagenes agrupadas de arriba a abajo*/
+    scrollbar-color: rgb(202, 146, 73) beige;
+}
+
+article {
+    corner-shape: bevel;
+    border: solid;
+    background-color: white;
+    padding: 1rem;
+    img {
+        width: 100px;
+    }
+}
