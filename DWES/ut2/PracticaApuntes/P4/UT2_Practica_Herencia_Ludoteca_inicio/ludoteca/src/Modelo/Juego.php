@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 // TODO M4. Implementa la base abstracta Juego y las operaciones del préstamo.
 abstract class Juego implements Prestable {
-    use GenerarEtiqueta;
+    use GeneraEtiqueta;
     private int $id;
     private string $nombre;
-    private bool $prestado;
-    private int $dias;
+    private bool $prestado = false;
+    private int $dias = 0;
     function __construct(int $id, string $nombre)
     {       
-        if($id >= 0){
+        if($id <= 0){
            throw new InvalidArgumentException('Id Incorrecto');
-        }elseif($nombre === ''){
+        }elseif(trim($nombre) === ''){
             throw new InvalidArgumentException('Nombre Incorrecto');
         }else{
             $this->id = $id;
@@ -36,7 +36,12 @@ abstract class Juego implements Prestable {
     public abstract function plazoMaximo(): int;
 
     public function ficha(): string{
-        return $this->etiqueta()."·".$this->prestado()."· Dias: ".$this->dias();
+        if ($this->prestado()) {
+            $estado = 'prestado ' . $this->dias() . ' días';
+        } else {
+            $estado = 'disponible';
+        }
+        return $this->etiqueta()."·".$estado."· Dias: ".$this->dias();
     }
     
     #[Override]
@@ -48,12 +53,12 @@ abstract class Juego implements Prestable {
             if($this->prestado() === true){
                 throw new PrestamoException('El juego ya esta prestado');
             }
-            elseif($this->plazoMaximo() < $this->dias()){
+            elseif($this->plazoMaximo() < $dias){
                 throw new PrestamoException('Plazo maximo suprado');
             }
             else{
-                $this->dias === true;
-                $this->dias + $dias;
+                $this->prestado = true;
+                $this->dias = $dias;
             }
         }
     }
@@ -71,8 +76,8 @@ abstract class Juego implements Prestable {
                 throw new PrestamoException('Plazo maximo superado');
             }
             else{
-                $this->dias === true;
-                $this->dias + $diasExtra;
+                $this->prestado = true;
+                $this->dias = $this->dias + $diasExtra;
             }
         }
     }
@@ -82,8 +87,8 @@ abstract class Juego implements Prestable {
         if($this->prestado() === false){
             throw new PrestamoException('El juego no esta prestado');
         }else{
-            $this->prestado === false;
-            $this->dias === 0;
+            $this->prestado = false;
+            $this->dias = 0;
         }
     }
     

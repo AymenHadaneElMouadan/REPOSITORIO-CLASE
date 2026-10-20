@@ -7,16 +7,27 @@ final class JuegoMesa extends Juego{
 
     private int $jugadores;
 
-    #[Override]
     public function __construct(int $id, string $nombre, int $jugadores)
     {
+        parent::__construct($id, $nombre);
         $this->jugadores = $jugadores;
-        return parent::__construct($id, $nombre);
+        if($jugadores <= 0){
+            throw new InvalidArgumentException('Numero de jugadores no valido');
+        }
     }
+
+
     #[Override]
     public function plazoMaximo(): int
     {
-        throw new \Exception('Not implemented');
+        $plazoMaximo = 14;
+        return $plazoMaximo;
+    }
+
+    #[Override]
+    public function ficha(): string
+    {
+        return parent::ficha().' · '.$this->jugadores.' jugadores';
     }
 
 }
