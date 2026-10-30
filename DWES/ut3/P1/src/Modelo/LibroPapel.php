@@ -4,14 +4,11 @@ declare(strict_types= 1);
 
 namespace Aymenhadane\Biblioteca\Modelo;
 
-
-use Libro;
+use Aymenhadane\Biblioteca\Modelo\Libro;
 use Override;
 
-class LibroDigital extends Libro{
-    public function __construct(){}
-    #[Override]
-	public function costeResposicionesCentimos(): int
+class LibroPapel extends Libro{
+    public function costeResposicionesCentimos(): int
     {
         return $this->unidades() * 400;
     }

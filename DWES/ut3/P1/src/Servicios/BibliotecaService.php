@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Aymenhadane\Biblioteca\Service\BibliotecaService;
+namespace Aymenhadane\Biblioteca\Servicios;
 
-use Libro;
+use Aymenhadane\Biblioteca\Modelo\Libro;
 
 class BibliotecaService{
 
@@ -22,13 +22,14 @@ class BibliotecaService{
 
         return array_filter(
             $this->todos(),
-            fn(Libro $l) => (str_contains(self::normalizar($l->texto), $texto) ||
+            fn(Libro $l) => (str_contains(self::normalizar($l->titulo()), $texto) ||
                 str_contains(self::normalizar($l->autor()), $texto) &&
                 ($genero == '' || $l->genero() === $genero) &&
                 ($tipo == '' || $l->getTipo() === $tipo) &&
                 (!$soloDestacados == '' || $l->destacado())
             )
         );
+    }
     public function filas(array $libros): array {
         return array_map(
             fn(Libro $l) =>[
@@ -48,7 +49,7 @@ class BibliotecaService{
     }
     public function resumen(array $libros): array {
         return array_reduce(
-            $this->todos(),
+            $libros,
             fn(array $carry, Libro $l) =>[
                 "titulos" => ++$carry["titulos"],
                 "unidades" => $carry["unidades"] + $l->unidades(),

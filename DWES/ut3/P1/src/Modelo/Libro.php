@@ -14,9 +14,9 @@ abstract class Libro {
         private int $paginas,
         private string $genero,
         private int $unidades,
-        private DateTimeImmutable $fechaAlta,
+        private ?DateTimeImmutable $fechaAlta,
         private bool $destacado,
-        private string $observaciones)
+        private ?string $observaciones)
     {
         $this->titulo = self::normalizar($this->titulo);
         $this->autor = self::normalizar($this->autor);
@@ -27,13 +27,13 @@ abstract class Libro {
             throw new InvalidArgumentException('Argumnetos vacios');
         }
 
-        if(mb_strlen($this->titulo, 'UTF-8')> 120 || mb_strlen($this->autor, 'UTF-8')){
+        if(mb_strlen($this->titulo, 'UTF-8') > 120 || mb_strlen($this->autor, 'UTF-8') > 80){
             throw new InvalidArgumentException('Tamaños incorrectos');
         }
         if($this->paginas < 1 || $this-> paginas > 3000){
             throw new InvalidArgumentException();
         }
-        if(!in_array($this->genero, ['ciencia', 'fantasi', 'terror'])){
+        if(!in_array($this->genero, ['ciencia', 'fantasia', 'terror'])){
             throw new InvalidArgumentException();
         }
         if($this->unidades < 1 || $this->unidades > 50){
@@ -53,9 +53,8 @@ abstract class Libro {
     public function observaciones(): string {return $this->observaciones;}
     public function paginas(): int {return $this->paginas;}
     public function unidades(): int {return $this->unidades;}
-    public function fechaAlta(): DateTimeImmutable {return $this->fechaAlta;}
+    public function fechaAlta(): ?DateTimeImmutable {return $this->fechaAlta;}
     public function destacado(): bool {return $this->destacado;}
-
 
     public abstract function getTipo() : string;
     public abstract function costeResposicionesCentimos(): int;
