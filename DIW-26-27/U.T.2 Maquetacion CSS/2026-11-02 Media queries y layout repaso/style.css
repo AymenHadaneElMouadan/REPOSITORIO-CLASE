@@ -1,0 +1,119 @@
+:root {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    --blue-100: #badbe6;
+    --blue-500: blue;
+    --blue-950: rgb(0, 0, 58);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    min-height: 100dvh;
+}
+/* mobile first */
+/* extra-small (xs) o mobile*/
+
+body{
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-app{
+    background-color: var(--blue-950);
+    color: white;
+    display: flex;
+    padding: 0.5rem;
+    /* 
+    justify-content: direccion principal;
+    align-items:        direccion secundaria;*/
+    align-items: center; 
+
+    .title {
+        flex: 1 1 0;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    .menu-button {
+        border: solid 1px red;
+    }
+    .login-button{
+        background-color:transparent;
+        border: none;
+
+        &::before {
+            content: attr(data-shortname);
+            display: inline-block;
+            padding: 0.5rem;
+            background-color: white;
+            color: var(--blue-950);
+            border-radius: 50%;
+        }
+    }
+}
+.nav-app{
+    display: none;
+}
+.main-app{
+    background-color: var(--blue-100);
+    flex-grow: 1 1 0;
+}
+
+.footer-app{
+    background-color: var(--blue-950);
+    color: white;
+}
+
+.ads-left, .ads-right{
+    display: none;
+}
+
+aside.ads-left, aside.ads-right{
+    display: unset;
+}
+    
+
+/*medium (md) o tableta*/
+@media screen and (width >= 768px) and (width < 1280px){
+    .header-app .login-button::before {
+        content: attr(data-longname);
+        border-radius: 1rem;
+    }
+    aside.ads-left, aside.ads-right{
+        display: block !important;
+    }
+    
+}
+
+/*large (lg) o monitor*/
+@media screen and (width >= 1280px) and (width < 3840px){
+    body{
+        display: grid;
+        grid-template-areas: 
+            "ads-left   header  ads-right"
+            "ads-left   main    ads-right"
+            "ads-left   footer  ads-right"
+        ;
+        grid-template-columns: 1fr 1280px 1fr;
+        grid-template-rows: auto 1fr auto;
+    }
+    .header-app{
+        grid-area: header;
+    }
+    .main-app{
+        grid-area: main;
+    }
+    .footer-app{
+        grid-area: footer;
+    }
+    .ads-left{
+        grid-area: ads-left;
+    }  
+    .ads-right{
+        grid-area: ads-right;
+    }
+}
