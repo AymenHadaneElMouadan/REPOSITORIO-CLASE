@@ -1,0 +1,16 @@
+{
+    "name": "aymenhadane/biblioteca",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Aymenhadane\\Biblioteca\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aymen",
+            "email": "6314422@alu.murciaeduca.es"
+        }
+    ],
+    "require": {}
+}
