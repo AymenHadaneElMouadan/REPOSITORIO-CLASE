@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-
+    <script type="module" src="/views/categories.js"></script>
 </head>
 <body>
-    <header>Categorias Arcas</header>
+    <header class="header-app">
+        <div class="title">
+            Mercado Arcas Categorias
+        </div>
+    </header>
 
     <nav>
         <ul>
@@ -17,17 +21,30 @@
             <li><a href="/views/products.html">Productos</a></li>
         </ul>
     </nav>
-    <main>
+    <main class="main-app">
         <h1>Categorias</h1>
 
         <section id="tSctCategories" class="container-categories">
-            <article class="card-category" data-category="portátiles">
+            <!-- <article class="card-category" data-category="portátiles">
                 <header>Portátiles</header>
                 <img src="" alt="">
                 <span>Cantidad</span>
-            </article>
+            </article> -->
         </section>
 
+        <footer class="footer-app">
+            <div>&copy; 2026 Mercado Arcas</div>
+    
+            <header>Secciones</header>
+            <div>Inicio</div>
+            <div>Categories</div>
+            <div>Products</div>
+    
+            <header>Formas de pago</header>
+            <div>En efectivo</div>
+            <div>Tarjeta de débito/crédito</div>
+            <div>Bizum</div>
+        </footer>
     </main>
 </body>
 </html>

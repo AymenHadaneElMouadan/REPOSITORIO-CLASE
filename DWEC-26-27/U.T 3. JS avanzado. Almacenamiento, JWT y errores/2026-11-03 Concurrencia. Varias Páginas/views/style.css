@@ -1,6 +1,7 @@
 :root{
     font-family: Arial, Helvetica, sans-serif;
     --orange-50: rgb(255, 237, 203);
+    --orange-200: rgb(243, 206, 137);
     --orange-500: rgb(202, 166, 98);
     --orange-900: rgb(66, 43, 0);
 }
@@ -13,9 +14,80 @@
 
 body {
     min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
 }
-body>header{
+.header-app{
     background-color: var(--orange-900);
     color: white;
+    text-align: center;
     font-size: 2rem;
 }
+
+nav{
+    display: none;
+}
+
+.main-app {
+    overflow-y: scroll;
+}
+
+.container-categories {
+    background-color: var(--orange-200);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.card-category {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    header{
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    
+    img{
+        width: 100%;
+    }
+}
+
+.footer-app{
+    background-color: var(--orange-900);
+    color: white;
+}
+
+
+
+@media all and ( width >= 768px) {
+    .container-categories{
+        display: grid;
+        grid-template-columns: repeat(4, minmax(100px, 1fr));
+    }
+
+    .card-category{
+        font-size: 1.5rem;
+    }
+}
+
+
+
+@media all and ( width >= 1280px) {
+    .container-categories{
+        grid-template-columns: unset;
+        grid-template-rows: 100px 100px;
+    }
+    img{
+        width: 100px;
+    }
+}
+
+

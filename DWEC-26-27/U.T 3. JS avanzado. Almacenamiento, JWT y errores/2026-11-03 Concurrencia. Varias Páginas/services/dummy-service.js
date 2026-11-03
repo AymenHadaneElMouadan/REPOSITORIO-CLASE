@@ -1,3 +1,5 @@
+import { Category } from '../models/category.model.js';
+
 export class CategoryDTO{
     #slug;
     #name;
@@ -16,18 +18,18 @@ export class CategoryDTO{
 }
 
 export class DummyService {
-    static BASE_URL = '';
+    static BASE_URL = 'https://dummyjson.com/products/';
     
-    async getCategorie(){
+    async getCategories(){
         try{
             const url = DummyService.BASE_URL + 'categories';
             const response = await fetch(url);
             const data = await response.json();
-            if (!data.ok){
-                throw new DummyServiceError('No puedo recuperar las categorias', error.message, 'getCategorias')
+            if (!response.ok){
+                throw new Error(response.statusText);
             }
-            /* const categories = data.map(categoryDto => new CategoryModel(categoryDto.slug, categoryDto.name)); */
-            const categories = data.map(({slug, name}) => new CategoryModel(slug, name));   
+            const categories = data.map(({slug, name}) => new Category(slug, name));
+            return categories;
         } catch (error){
             throw new DummyServiceError('No puedo recuperar las categorias', error.message, 'getCategorias');
         }
