@@ -1,0 +1,21 @@
+:root{
+    font-family: Arial, Helvetica, sans-serif;
+    --orange-50: rgb(255, 237, 203);
+    --orange-500: rgb(202, 166, 98);
+    --orange-900: rgb(66, 43, 0);
+}
+
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100dvh;
+}
+body>header{
+    background-color: var(--orange-900);
+    color: white;
+    font-size: 2rem;
+}
