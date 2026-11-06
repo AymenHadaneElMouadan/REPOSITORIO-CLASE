@@ -29,11 +29,25 @@ export class DummyService {
                 throw new Error(response.statusText);
             }
             const categories = data.map(({slug, name}) => new Category(slug, name));
+            const promises = categories.map(category =>)
             return categories;
         } catch (error){
             throw new DummyServiceError('No puedo recuperar las categorias', error.message, 'getCategorias');
         }
 
+    }
+    async getProductById(productId){
+        try{
+            const url = DummyService.BASE_URL + 'cateogry/' + productId;
+            const response = await fetch(url);
+            if(!response.ok){
+                throw new Error(response.statusText);
+            }
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            throw new DummyServiceError('No puedo recuperar las categorias', error.message, 'getCategories');
+        }
     }
 }
 
