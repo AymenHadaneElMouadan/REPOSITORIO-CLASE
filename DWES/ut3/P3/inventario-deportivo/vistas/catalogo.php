@@ -41,12 +41,14 @@ use function App\Soporte\e;
         <p>No hay coincidencias</p>
     <?php else: ?>
         <?php foreach ($materiales as $material): ?>
-            <div><?=e($material->nombre()) ?></div>
-            <div><?=e($material->fabricante())?></div>
-            <div><?=$material->unidades()?></div>
-            <div><?=e($material->categoria())?></div>
-            <div><?=e($material->fechaAlta()?->format('Y-m-d') ?? 'Sin fecha')?></div>
-        <?php endforeach; ?>
+            <tr>
+                <td><?=e($material->nombre()) ?></td>
+                <td><?=e($material->fabricante())?></td>
+                <td><?=$material->unidades()?></td>
+                <td><?=e($material->categoria())?></td>
+                <td><?=e($material->fechaAlta()?->format('Y-m-d') ?? 'Sin fecha')?></td>
+            </tr> 
+            <?php endforeach; ?>
     <?php endif; ?>
 <?php endif; ?>
 <p><a href="index.php">Limpiar filtros</a></p>

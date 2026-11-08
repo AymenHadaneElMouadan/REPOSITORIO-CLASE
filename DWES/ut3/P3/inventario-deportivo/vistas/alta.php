@@ -16,7 +16,45 @@ use function App\Soporte\e;
     </ul>
 <?php endif; ?>
     <!-- COMPLETAR 4. Formulario POST multipart con controles HTML estáticos. -->
-    
+    <form method="post" action="alta.php" enctype="multipart/form-data">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre">
+
+        <br><br>
+
+        <label for="fabricante">Fabricante</label>
+        <input type="text" id="fabricante" name="fabricante">
+
+        <br><br>
+
+        <label for="unidades">Unidades</label>
+        <input type="text" id="unidades" name="unidades">
+
+        <br><br>
+
+        <label for="categoria">Categoría</label>
+        <select id="categoria" name="categoria">
+            <option value="">Elige una categoría</option>
+            <option value="colectivo">Colectivo</option>
+            <option value="raqueta">Raqueta</option>
+            <option value="fitness">Fitness</option>
+        </select>
+
+        <br><br>
+
+        <label for="fechaAlta">Fecha de alta</label>
+        <input type="text" id="fechaAlta" name="fechaAlta">
+        <span>YYYY-MM-DD</span>
+
+        <br><br>
+
+        <label for="imagen">Imagen</label>
+        <input type="file" id="imagen" name="imagen" accept="image/jpeg,image/png,image/webp">
+
+        <br><br>
+
+        <button type="submit">Guardar material</button>
+    </form> 
 <?php else: ?>
     <!-- Confirmación proporcionada. Solo aparece cuando asignas $creado. -->
     <h2>Material registrado</h2>
