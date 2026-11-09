@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Animacion GOLF</h1>
+    <script type="module">
+        const nSvg = document.querySelector('svg.palo')
+
+        nSvg.addEventListener('animationend', _ => {
+            document.querySelector('svg.circle').style.animationPlayState = 'running';
+        });
+    </script>
+    <main>
+        <svg class="palo" width="450" height="500" xmlns="http://www.w3.org/2000/svg"
+        style="width:450px; height: 500px;">
+            <rect x="300" y="200" width="40" height="260" fill="yellow" stroke="yellow" stroke-width="3" />
+        </svg>
+        <svg class="circle" width="50" heigth="00" viewBox="2 0 200 200" xmlns="http://w3.org"
+        style="width: 745px; height: 900px;">
+            <circle cx="100" cy="100" r="5" fill="white" stroke="white" stroke-width="4"/>
+
+        </svg>
+    </main>
+</body>
+</html>

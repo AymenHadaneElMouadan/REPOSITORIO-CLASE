@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: green;
+}
+main{
+    flex: 1 1 0;
+}
+
+svg.palo{
+    /* para centrar asi a que poner las tres propiedades*/
+    position:absolute;
+    margin: auto;
+    animation-name: spin;
+    animation-duration: 3s;
+    transform-origin: top;
+    animation-timing-function: linear;
+}
+
+
+@keyframes spin {
+    0%{
+        transform: rotate(0turn);
+    }
+    50%{
+        transform: rotate(30deg);
+    }
+    100%{
+        transform: rotate(0turn);
+    }
+}
+
+svg.circle{
+    /* para centrar asi a que poner las tres propiedades*/
+    position:absolute;
+    animation-name: move;
+    animation-play-state: paused;
+    animation-duration: 1s;
+    position: absolute;
+    animation-timing-function: linear;
+}
+
+@keyframes move {
+    from {
+        left: 0px;
+    }to {
+        left: 900px;
+    }
+}
