@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Controlador;
 
 use App\Servicio\Biblioteca;
@@ -28,7 +30,9 @@ final class AltaControlador
                 $resultado = validarLibro($_POST);
                 $errores = $resultado['errores'];
                 $subida = inspeccionarPortada($_FILES);
-                if ($subida['error'] !== null) { $errores['portada'] = $subida['error']; }
+                if ($subida['error'] !== null) {
+                    $errores['portada'] = $subida['error'];
+                }
                 if ($errores === []) {
                     $datos = $resultado['datos'];
                     try {
@@ -47,13 +51,15 @@ final class AltaControlador
                             $guardado = move_uploaded_file($archivo['tmp_name'], $destino['ruta']);
                             if ($guardado === true) {
                                 $nuevo->cambiarPortada($destino["nombre"]);
-                            }                                 
+                            } else {
+                                $errores['portada'] = 'No se ha podido guardar la portada.';
+                            }
                         }
                         // Al terminar sin errores, agregar $nuevo y asignarlo a $creado.
-                        if($errores === []) {
+                        if ($errores === []) {
                             $biblioteca->agregar($nuevo);
-                            $nuevo = $creado;
-                        }  
+                            $creado = $nuevo;
+                        }
                     } catch (InvalidArgumentException) {
                         $errores['general'] = 'No se ha podido crear el libro con esos datos.';
                     } catch (RuntimeException $error) {
