@@ -26,7 +26,7 @@ use function App\Soporte\e;
 
     <!-- COMPLETAR 1. Formulario GET con controles HTML estáticos. -->
     <form method="get" action="./index.php">
-        <label for="q">Titulo</label>
+        <label for="titulo">Titulo</label>
         <input type="text" id="q" name="q" value="">
         <br><br>
 
@@ -35,7 +35,7 @@ use function App\Soporte\e;
             <option value="">Todos</option>
             <option value="aventura">Aventura</option>
             <option value="estrategia">Estrategia</option>
-            <option value="rol">rol</option>
+            <option value="rol">Rol</option>
         </select>
         <br><br>
         

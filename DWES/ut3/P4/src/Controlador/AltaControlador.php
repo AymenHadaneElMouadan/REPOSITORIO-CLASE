@@ -45,7 +45,7 @@ final class AltaControlador
                     try {
                         // COMPLETAR 3. Construir $nuevo con los cinco datos validados.
                         $nuevo = new Videojuego(
-                            $datos['titulo'], $datos['horas'], $datos['genero'],$datos['fechaLanzamiento']
+                            $datos['titulo'], $datos['estudio'], $datos['horas'], $datos['genero'],$datos['fechaLanzamiento']
                         );
                         // COMPLETAR 5. Guardar y asociar la carátula si hay archivo.
                         if ($subida['archivo'] !== null) {
@@ -53,13 +53,14 @@ final class AltaControlador
                             $destino = prepararDestino($archivo["extension"]);
                             $guardado = move_uploaded_file($archivo["tmp_name"], $destino["ruta"]);
                             if (!$guardado) {
-                                $errores["imagen"] = "No se ha podido guardar la imagen";
+                                $errores["caratula"] = "No se ha podido guardar la caratula";
                             }else{
                                 $nuevo->cambiarCaratula($destino['nombre']);
                             }
                         }
                         // Al terminar sin errores, agregar $nuevo y asignarlo a $creado.
                         if ($errores === []) {
+                            $this->catalogo->agregar($nuevo);
                             $creado = $nuevo;
                         }
 

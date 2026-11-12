@@ -98,7 +98,7 @@ function inspeccionarCaratula(array $archivos): array
         return ['archivo'=> null,'error'=> 'Formato de imagen no permitido'];
     }
     $a['extension'] = MIME_CARATULAS[$mime];
-    return ['archivo' => null, 'error' => 'Falta completar la validación de la carátula.'];
+    return ['archivo' => $a, 'error' => null];
 }
 
 // Proporcionado. Recibe una extensión ya obtenida de MIME_CARATULAS.
@@ -116,8 +116,7 @@ function prepararDestino(string $extension): array
 
     try {
         // COMPLETAR 6. Nombre aleatorio y extensión validada.
-        
-        $nombre = '';
+        $nombre = bin2hex(random_bytes(16) . '.' . $extension);
     } catch (Throwable $error) {
         throw new RuntimeException('No se ha podido preparar el nombre de la carátula.', 0, $error);
     }
