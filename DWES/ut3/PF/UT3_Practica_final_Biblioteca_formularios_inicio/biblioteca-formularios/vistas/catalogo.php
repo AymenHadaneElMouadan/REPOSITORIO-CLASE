@@ -3,35 +3,40 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<head><meta charset="UTF-8"><title>Catálogo de la biblioteca</title></head>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de la biblioteca</title>
+</head>
+
 <body>
-<h1>Catálogo de la biblioteca</h1>
-<p><a href="alta.php">Dar de alta un libro</a></p>
-<!-- Bloque de errores proporcionado. Cada entrada identifica el campo y su mensaje. -->
-<?php if ($errores !== []): ?>
-    <ul role="alert">
-        <?php foreach ($errores as $campo => $mensaje): ?>
-            <li><?= e($campo) ?>: <?= e($mensaje) ?></li>
-        <?php endforeach; ?>
-    </ul>
-<?php endif; ?>
-<!-- COMPLETAR 1. Formulario GET con controles HTML estáticos. -->
-<form action="/index.php" method="get">
-    <label for="q">Autor</label>
-    <input id="q" name="q" type="text" value="">
-    <br><br>
+    <h1>Catálogo de la biblioteca</h1>
+    <p><a href="alta.php">Dar de alta un libro</a></p>
+    <!-- Bloque de errores proporcionado. Cada entrada identifica el campo y su mensaje. -->
+    <?php if ($errores !== []): ?>
+        <ul role="alert">
+            <?php foreach ($errores as $campo => $mensaje): ?>
+                <li><?= e($campo) ?>: <?= e($mensaje) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+    <!-- COMPLETAR 1. Formulario GET con controles HTML estáticos. -->
+    <form action="index.php" method="get">
+        <label for="q">Autor o título</label>
+        <input id="q" name="q" type="text" value="">
+        <br><br>
 
-    <label for="genero">Genero</label>
-    <select name="genero" id="genero">
-        <option value="">Todos</option>
-        <option value="ciencia">Ciencia</option>
-        <option value="fantasia">Fantasia</option>
-        <option value="terror">Terror</option>
-    </select>
-    <br><br>
+        <label for="genero">Genero</label>
+        <select name="genero" id="genero">
+            <option value="">Todos</option>
+            <option value="ciencia">Ciencia</option>
+            <option value="fantasia">Fantasia</option>
+            <option value="terror">Terror</option>
+        </select>
+        <br><br>
 
-    <button type="submit">Buscar</button>
-</form>
+        <button type="submit">Buscar</button>
+    </form>
 
 <?php if ($errores === []): ?>
     <!-- COMPLETAR 3. Tabla de libros o mensaje si no hay coincidencias. -->
@@ -48,7 +53,7 @@
             </tr>
         <?php endforeach; ?>
     <?php endif; ?>
-<?php endif; ?>
-<p><a href="index.php">Limpiar filtros</a></p>
+    <p><a href="index.php">Limpiar filtros</a></p>
 </body>
+
 </html>

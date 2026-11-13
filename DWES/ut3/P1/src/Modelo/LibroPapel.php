@@ -10,9 +10,9 @@ use Override;
 class LibroPapel extends Libro{
     public function costeResposicionesCentimos(): int
     {
-        return $this->unidades() * 400;
+        return $this->unidades() * 5 * $this->paginas();
     }
     public function getTipo() : string{
-        return 'digital';
+        return 'papel';
     }
 }

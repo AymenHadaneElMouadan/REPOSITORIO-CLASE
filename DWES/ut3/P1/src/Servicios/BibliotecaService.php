@@ -1,45 +1,53 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Aymenhadane\Biblioteca\Servicios;
 
 use Aymenhadane\Biblioteca\Modelo\Libro;
 
-class BibliotecaService{
+class BibliotecaService
+{
 
-    public function __construct(private array $libros){}
-    public function todos(): array {
+    public function __construct(private array $libros) {}
+    public function todos(): array
+    {
         return $this->libros;
     }
-    public function agregar(Libro $libro): void {
+    public function agregar(Libro $libro): void
+    {
         $libros[] = $libro;
     }
-    private static function normalizar(string $texto): string {
+    private static function normalizar(string $texto): string
+    {
         return mb_strtolower(trim($texto), 'UTF-8');
     }
-    public function filtrar(string $q, string $genero, string $tipo,bool $soloDestacados): array {
+    public function filtrar(string $q, string $genero, string $tipo, bool $soloDestacados): array
+    {
         $texto = mb_strtolower(trim($q));
 
         return array_filter(
             $this->todos(),
-            fn(Libro $l) => (str_contains(self::normalizar($l->titulo()), $texto) ||
-                str_contains(self::normalizar($l->autor()), $texto) &&
+            fn(Libro $l) => (
+                (str_contains(self::normalizar($l->titulo()), $texto) ||
+                    str_contains(self::normalizar($l->autor()), $texto)) &&
                 ($genero == '' || $l->genero() === $genero) &&
                 ($tipo == '' || $l->getTipo() === $tipo) &&
                 (!$soloDestacados == '' || $l->destacado())
             )
         );
     }
-    public function filas(array $libros): array {
+    public function filas(array $libros): array
+    {
         return array_map(
-            fn(Libro $l) =>[
+            fn(Libro $l) => [
                 "titulo" => $l->titulo(),
                 "autor" => $l->autor(),
                 "paginas" => $l->paginas(),
                 "genero" => $l->genero(),
                 "tipo" => $l->getTipo(),
                 "unidades" => $l->unidades(),
-                "fechaAlta" => $l->fechaAlta()?->format('Y-m-D' ?? 'Sin fecha'),
+                "fechaAlta" => $l->fechaAlta()?->format('Y-m-D') ?? 'Sin fecha',
                 "destacado" => $l->destacado(),
                 "observaciones" => $l->observaciones(),
                 "costeCentimos" => $l->costeResposicionesCentimos()
@@ -47,10 +55,11 @@ class BibliotecaService{
             $libros
         );
     }
-    public function resumen(array $libros): array {
+    public function resumen(array $libros): array
+    {
         return array_reduce(
             $libros,
-            fn(array $carry, Libro $l) =>[
+            fn(array $carry, Libro $l) => [
                 "titulos" => ++$carry["titulos"],
                 "unidades" => $carry["unidades"] + $l->unidades(),
                 "paginas" => $carry["paginas"] + $l->paginas(),
