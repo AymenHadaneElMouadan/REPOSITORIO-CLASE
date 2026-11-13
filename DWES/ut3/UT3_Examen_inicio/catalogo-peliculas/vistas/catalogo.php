@@ -31,8 +31,8 @@ use function App\Soporte\e;
 
         <!-- COMPLETAR 1. Formulario GET con controles HTML estáticos. -->
 
-        <form type="get" action="catalogo.php" src="./index.html" >
-            <label for="titulo">Titulo</label>
+        <form method="get" action="index.php">
+            <label for="titulo">Titulo o director</label>
             <input type="text" id="q" name="q" value="">
 
             <label for="genero">Genero</label>
