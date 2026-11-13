@@ -1,6 +1,5 @@
 <?php
-
-use function App\Soporte\e;
+    use function App\Soporte\e;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -39,33 +38,20 @@ use function App\Soporte\e;
         <button type="submit">Buscar</button>
     </form>
 
-    <?php if ($errores === []): ?>
-        <?php if ($libros === []): ?>
-            <p>No hay libros que coincidan</p>
-        <?php else: ?>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Autor</th>
-                        <th>Páginas</th>
-                        <th>Género</th>
-                        <th>Fecha de alta</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($libros as $libro): ?>
-                        <tr>
-                            <td><?= e($libro->titulo()) ?></td>
-                            <td><?= e($libro->autor()) ?></td>
-                            <td><?= $libro->paginas() ?></td>
-                            <td><?= e($libro->genero()) ?></td>
-                            <td><?= e($libro->fechaAlta()?->format('Y-m-d') ?? 'Sin fecha') ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        <?php endif; ?>
+<?php if ($errores === []): ?>
+    <!-- COMPLETAR 3. Tabla de libros o mensaje si no hay coincidencias. -->
+    <?php if ($libro === []): ?>
+        <div>No hay libros que coincidan</div>
+    <?php else: ?>    
+        <?php foreach($libros as $libro): ?>
+            <tr>
+                <td>Titulo: <?= e($libro->titulo()) ?></td> <br>
+                <td>Autor: <?= e($libro->autor()) ?></td> <br>
+                <td>Paginas: <?= $libro->paginas() ?></td> <br>
+                <td>Genero: <?= e($libro->genero()) ?></td> <br>
+                <td>Fecha de alta: <?=e($libro->fechaAlta()?->format('Y-m-d') ?? 'Sin fecha')?></td> <br><br><br>
+            </tr>
+        <?php endforeach; ?>
     <?php endif; ?>
     <p><a href="index.php">Limpiar filtros</a></p>
 </body>
