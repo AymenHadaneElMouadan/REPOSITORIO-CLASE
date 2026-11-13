@@ -30,18 +30,18 @@ use function App\Soporte\e;
             <?php endif; ?>
 
             <!-- COMPLETAR 2. Formulario POST multipart con controles HTML estáticos. -->
-            <form type="post" action="alta.php" enctype="multipart/form-data" >
+            <form method="post" action="alta.php" enctype="multipart/form-data">
                 <label for="titulo">Titulo</label>
-                <input type="text" id="titulo" name="titulo" >
+                <input type="text" id="titulo" name="titulo">
 
                 <label for="director">Director</label>
-                <input type="text" id="director" name="director" >
+                <input type="text" id="director" name="director">
 
                 <label for="duracion">Duracion</label>
-                <input type="text" id="duracion" name="duracion" >
+                <input type="text" id="duracion" name="duracion">
 
-                <label for="titulo">Titulo</label>
-                <select name="titulo" id="titulo">
+                <label for="genero">Género</label>
+                <select name="genero" id="genero">
                     <option value="">Elige un genero</option>
                     <option value="ciencia">Ciencia</option>
                     <option value="fantasia">Fantasia</option>
@@ -82,7 +82,7 @@ use function App\Soporte\e;
 
                 <?php if ($creado->cartel() !== null): ?>
                     <img src="cartel.php?nombre=<?= e($creado->cartel()) ?>"
-                         alt="Cartel de la película creada" width="180">
+                        alt="Cartel de la película creada" width="180">
                 <?php else: ?>
                     <p>Sin cartel</p>
                 <?php endif; ?>

@@ -11,13 +11,13 @@ use function PHPUnit\Framework\assertSame;
 final class CatalogoTest extends TestCase
 {
     // COMPLETAR 8. Creación válida y estado del objeto.
-    public function objetoComprobacion(){
-        $p1 = new Pelicula(" Dune ", " Fenis Villeneuve ", 155, 'ciencia');
+    public function objetoComprobacion()
+    {
+        $p1 = new Pelicula(" Dune ", " Denis Villeneuve ", 155, 'ciencia');
 
-
-        assertSame($p1->titulo(), 'Dune');
-        assertSame($p1->director(), 'Denis Villenevue');
-        assertSame($p1->duracion(), 155);
+        assertSame('Dune', $p1->titulo());
+        assertSame('Denis Villenevue', $p1->director());
+        assertSame(155, $p1->duracion());
         assertNull($p1->fechaEstreno());
     }
 }
