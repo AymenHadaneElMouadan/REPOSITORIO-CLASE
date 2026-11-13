@@ -32,7 +32,6 @@ final class HorasTest extends TestCase
             $this->assertNull($resultado['datos']);
         }
     }
-
     // Proporcionado. Datos válidos sobre los que varías solo horas.
     private function datosValidos(): array
     {

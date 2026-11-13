@@ -35,15 +35,15 @@ use function App\Soporte\e;
             <br><br>
 
             <label for="horas">Horas</label>
-            <input type="text" id="horas" name="horas" >
+            <input type="text" id="horas" name="horas" required>
             <br><br>
 
             <label for="genero">Genero</label>
-            <select name="genero" id="genero">
-                <option value="">Todos</option>
+            <select name="genero" id="genero" required>
+                <option value="">Elige un Genero</option>
                 <option value="aventura">Aventura</option>
                 <option value="estrategia">Estrategia</option>
-                <option value="rol">rol</option>
+                <option value="rol">Rol</option>
             </select>
             <br><br>
 

@@ -41,7 +41,6 @@ use function App\Soporte\e;
         
         <button type="submit">Buscar</button>
         <br><br><br><br>
-
     </form>
 
     <?php if ($errores === []): ?>

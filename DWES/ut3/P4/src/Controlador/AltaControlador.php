@@ -63,7 +63,6 @@ final class AltaControlador
                             $this->catalogo->agregar($nuevo);
                             $creado = $nuevo;
                         }
-
                     } catch (InvalidArgumentException) {
                         $errores['general'] = 'No se ha podido crear el videojuego con esos datos.';
                     } catch (RuntimeException $error) {

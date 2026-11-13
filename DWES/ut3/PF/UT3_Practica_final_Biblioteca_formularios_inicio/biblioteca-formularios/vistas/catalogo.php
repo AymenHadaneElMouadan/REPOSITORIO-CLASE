@@ -1,5 +1,5 @@
 <?php
-use function App\Soporte\e;
+    use function App\Soporte\e;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -40,11 +40,11 @@ use function App\Soporte\e;
     <?php else: ?>    
         <?php foreach($libros as $libro): ?>
             <tr>
-                <td>Titulo : <?= e($libro->titulo()) ?></td> <br>
+                <td>Titulo: <?= e($libro->titulo()) ?></td> <br>
                 <td>Autor: <?= e($libro->autor()) ?></td> <br>
                 <td>Paginas: <?= $libro->paginas() ?></td> <br>
                 <td>Genero: <?= e($libro->genero()) ?></td> <br>
-                <td>Fecha de alta : <?=e($libro->fechaAlta()?->format('Y-m-d') ?? 'Sin fecha')?></td> <br><br><br>
+                <td>Fecha de alta: <?=e($libro->fechaAlta()?->format('Y-m-d') ?? 'Sin fecha')?></td> <br><br><br>
             </tr>
         <?php endforeach; ?>
     <?php endif; ?>
