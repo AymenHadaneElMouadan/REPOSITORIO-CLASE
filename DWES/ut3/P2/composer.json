@@ -1,0 +1,12 @@
+{
+    "name": "safex/p2",
+    "authors": [
+        {
+            "name": "Aymen Hadane El Mouadan",
+            "email": "6314422@alu.murciaeduca.es"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
