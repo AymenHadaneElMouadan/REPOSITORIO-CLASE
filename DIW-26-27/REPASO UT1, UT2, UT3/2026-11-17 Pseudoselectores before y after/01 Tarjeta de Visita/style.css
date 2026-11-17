@@ -1,0 +1,59 @@
+:root {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 32px;
+}
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100dvh;
+    background-color: black;
+    display: grid;
+    place-items: center;
+}
+
+.card {
+    border: solid 3px;
+    background-color: black;
+    color: gold;
+    position: relative;
+    width: 30ch;
+    height: 15ch;
+    text-wrap: balance;
+    text-align: center;
+    place-content: center;
+    border-radius: 1rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    padding: 1rem;
+
+    &::before {
+        content: attr(data-role);
+        position: absolute;
+        background-color: gold;
+        color: black;
+        top: -10%;
+        padding: 0.2em 1em;
+        border-radius: 1em;
+        left: 50%;
+        translate: -50%;
+        width: max-content;
+        font-weight: normal;
+        text-transform: capitalize;
+    }
+    &::after{
+        content: attr(data-phone) " " attr(data-email);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        font-size: 0.6em;
+        border-top: inherit;
+        width: 100%;
+        padding: 0.25rem;
+        font-weight: normal;
+        text-transform: initial;
+    }
+}

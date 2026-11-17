@@ -1,0 +1,35 @@
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+}
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100dvh;
+    display: grid;
+    place-items: center;
+}
+.person{
+    border: solid;
+    background-color: lightcyan;
+    width: 200px;
+    height: 300px;
+    position: relative;
+
+    &::before{
+        content: attr(data-name);
+        position: absolute;
+    }
+    &::after{
+        content: "";
+        position: absolute;
+        border: solid;
+        width: 75%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        --image: url(var(--data-image));
+        background-image: ;
+    }
+}
