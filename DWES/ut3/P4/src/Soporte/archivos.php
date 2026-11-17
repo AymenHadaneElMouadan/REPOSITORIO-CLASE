@@ -86,16 +86,16 @@ function inspeccionarCaratula(array $archivos): array
 
     // COMPLETAR 4. Tamaño, temporal legible y MIME. No mover aquí el archivo.
     if ($a['size'] < 1 || $a['size'] > 2 * 1024 * 1024) {
-        return ['archivo'=> null,'error'=> 'Tamaño del archivo incorrecto'];
+        return ['archivo' => null, 'error' => 'Tamaño del archivo incorrecto'];
     }
-    if (!is_file($a['tmp_name']) || !is_readable($a['tmp_name'])){
-        return ['archivo'=> null,'error'=> 'No se ha podido leer la imagen recibida'];
+    if (!is_file($a['tmp_name']) || !is_readable($a['tmp_name'])) {
+        return ['archivo' => null, 'error' => 'No se ha podido leer la imagen recibida'];
     }
     $detector = new finfo(FILEINFO_MIME_TYPE);
     $mime = $detector->file($a['tmp_name']);
 
     if ($mime === false || !isset(MIME_CARATULAS[$mime])) {
-        return ['archivo'=> null,'error'=> 'Formato de imagen no permitido'];
+        return ['archivo' => null, 'error' => 'Formato de imagen no permitido'];
     }
     $a['extension'] = MIME_CARATULAS[$mime];
     return ['archivo' => $a, 'error' => null];
@@ -116,7 +116,7 @@ function prepararDestino(string $extension): array
 
     try {
         // COMPLETAR 6. Nombre aleatorio y extensión validada.
-        $nombre = bin2hex(random_bytes(16) . '.' . $extension);
+        $nombre = bin2hex(random_bytes(16)) . '.' . $extension;
     } catch (Throwable $error) {
         throw new RuntimeException('No se ha podido preparar el nombre de la carátula.', 0, $error);
     }

@@ -16,9 +16,7 @@ use function App\Soporte\prepararDestino;
 
 final class AltaControlador
 {
-    public function __construct(private Catalogo $catalogo)
-    {
-    }
+    public function __construct(private Catalogo $catalogo) {}
 
     public function mostrar(): void
     {
@@ -52,19 +50,20 @@ final class AltaControlador
                             $datos['fechaEstreno'],
                         );
                         // COMPLETAR 5. Guardar y asociar el cartel si hay archivo.
-                        if($subida['archivos'] !== null) {
+                        if ($subida['archivos'] !== null) {
                             $archivo = $subida['archivos'];
                             $destino = prepararDestino($archivo['extension']);
                             $origen = move_uploaded_file($archivo['tm_name'], $destino['ruta']);
                             if ($origen === false) {
                                 $errores['cartel'] = 'Error en el origen';
-                            } else{
+                            } else {
                                 $nuevo->cambiarCartel($destino['nombre']);
                             }
                         }
                         // Al terminar sin errores, agregar $nuevo y asignarlo a $creado.
-                        if($errores === []) {
-                            $creado = $nuevo;    
+                        if ($errores === []) {
+                            $catalogo->agregar($nuevo);
+                            $creado = $nuevo;
                         }
                     } catch (InvalidArgumentException) {
                         $errores['general'] = 'No se ha podido crear la película con esos datos.';
