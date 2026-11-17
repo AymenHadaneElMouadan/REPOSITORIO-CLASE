@@ -1,0 +1,18 @@
+POST https://dummyjson.com/auth/login?delay=1000
+Content-Type: application/json
+
+{  
+    "username": "emilys",
+    "password": "emilyspass",
+    "expiresInMins": 30
+}
+
+### Devuelve los productos con el token
+
+GET https://dummyjson.com/auth/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3OTQ5MDUyMTYsImV4cCI6MTc5NDkwNzAxNn0.iFY7qpynE_AbyGy1g2a1fjNeilhTJMterLoD-kFpzug
+
+
+### Devuelve las categoras
+GET https://dummyjson.com/auth/products/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3OTQ5MDUyMTYsImV4cCI6MTc5NDkwNzAxNn0.iFY7qpynE_AbyGy1g2a1fjNeilhTJMterLoD-kFpzug
