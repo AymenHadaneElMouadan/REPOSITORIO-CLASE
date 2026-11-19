@@ -72,10 +72,15 @@ body.oscuro a{
     color: aqua;
 }
 
-body.amplio{
-    padding: 50px 50px;
+body.amplio form{
+    padding: 30px 30px;
 }
-
-select.amplio{
-    padding: 20px 30px;
+body.amplio select{
+    padding-block: 20px 20px;
+}
+body.amplio label{
+    padding-block: 20px 20px;
+}
+body.amplio li{
+    padding: 30px;
 }
