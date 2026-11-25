@@ -30,7 +30,21 @@
 <?php else: ?>
     <ul class="libros">
         <?php foreach ($libros as $libro): ?>
-            <li><?= e($libro->titulo) ?></li>
+            <?php if($favoritos !== null && in_array($libro->id, $favoritos, true)): ?>
+                <li><?= e($libro->titulo)?></li>
+                <p>Favorito</p>
+                <form method="post" action="add-favs.php">
+                    <input type="hidden" name="id" value="<?= $libro->id?>">
+                    <button>Quitar a favoritos</button>
+                </form>
+            <?php else: ?>
+                <li><?= e($libro->titulo)?></li>
+                <p>No favorito</p>
+                <form method="post" action="add-favs.php">
+                    <input type="hidden" name="id" value="<?= $libro->id?>">
+                    <button>Añadir a favoritos</button>
+                </form>
+            <?php endif; ?>
         <?php endforeach; ?>
     </ul>
 <?php endif; ?>

@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100dvh;
+    background-color: lightsalmon;
+}
+
+.mensaje{
+    background-color: blueviolet;
+    border: solid;
+    font-size: 2rem;
+    position: absolute;
+    text-align: center;
+    width: 15ch;
+
+    animation-name: movement, heartbeat;
+    animation-duration: 2500ms, 1s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: normal;
+}
+
+
+@keyframes movement{
+    0%{
+        top: 10%;
+        left: 10%;
+    }
+    33%{
+        top: 20%;
+        left: 70%;
+    }
+    66%{
+        top: 80%;
+        left: 60%;
+    }
+    100%{
+        top: 10%;
+        left: 10%;
+    }
+}
+@keyframes heartbeat{
+    0%{
+        scale: 1;
+    }
+    25%{
+        scale: 1.5;
+    }
+    0% {
+        scale: 1;
+    }
+}
+
+.tree{
+    position: absolute;
+    width: 244px;
+    height: 454px;
+    background-image: url(./images\ .jpeg);
+    background-size:contain;
+    background-repeat: no-repeat;
+    animation: 
+        show 2s linear 4s 1 normal both, 
+        up 3s linear 4s 1 normal both;
+}
+
+@keyframes show{
+    from{
+        display: none;
+    }
+    to {
+        display: block;
+    }
+}
+
+@keyframes up {
+    from{
+        bottom: -100%;
+    }
+    to{
+        bottom: 20%;
+    }
+}

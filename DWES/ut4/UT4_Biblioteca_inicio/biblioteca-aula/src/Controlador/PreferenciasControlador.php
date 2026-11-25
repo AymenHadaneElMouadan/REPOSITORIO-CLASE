@@ -16,7 +16,7 @@ final class PreferenciasControlador extends Controlador{
             redirigir('index.php');
         }
 
-        $formato = $_POST['formato' ?? null];
+        $formato = $_POST['formato'] ?? null;
         
         if(in_array($formato, ['compacto', 'amplio'], true)){
             $this->guardarCookie('formato', $formato);
