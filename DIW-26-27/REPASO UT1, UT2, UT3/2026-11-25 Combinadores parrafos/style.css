@@ -1,0 +1,12 @@
+.parrafo {
+    display: none;
+}
+
+input[type=radio]{
+    display: none;
+}
+
+input[type=radio]:checked .parrafo{
+    display: block;
+    color: blue;
+}

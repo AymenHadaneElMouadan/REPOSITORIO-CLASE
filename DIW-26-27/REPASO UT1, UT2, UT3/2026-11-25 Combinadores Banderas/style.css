@@ -1,0 +1,85 @@
+:root {
+    --width-flag: calc(1541px / 4);
+    --height-flag: calc(4882px / 19)
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100dvh;
+}
+input[type=checkbox]{
+    display: none;
+}
+
+table,
+tr,
+th,
+td {
+    
+    border: solid;
+    border-collapse: collapse;
+
+    td:first-child>label {
+        display: inline-block;
+        width: var(--width-flag);
+        height: var(--height-flag);
+        background-image: url(./sprite-flags.png);
+        background-size: 1541px 4882px;
+    }
+
+    th, td:last-child {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 1rem;
+    }
+    
+
+    tbody>tr:nth-child(1)>td:first-child>label {
+        background-position-x: calc(var(--width-flag) * -1);
+        background-position-y: calc(var(--height-flag) * -6);
+    }
+
+    tbody>tr:nth-child(2)>td:first-child>label {
+        background-position-x: calc(var(--width-flag) * -2);
+        background-position-y: calc(var(--height-flag) * -15);
+    }
+
+    tbody>tr:nth-child(3)>td:first-child>label {
+        background-position-x: calc(var(--width-flag) * 0);
+        background-position-y: calc(var(--height-flag) * -6);
+    }
+
+    tbody>tr:nth-child(4)>td:first-child>label {
+        background-position-x: calc(var(--width-flag) * -3);
+        background-position-y: calc(var(--height-flag) * -17);
+    }
+
+    tbody>tr:nth-child(5)>td:first-child>label {
+        background-position-x: calc(var(--width-flag) * -0);
+        background-position-y: calc(var(--height-flag) * -10);
+    }
+}
+
+input[type=checkbox] {
+    color: white;
+}
+
+input[type=checkbox]:checked + span{
+    animation: mostrar 1s;
+    animation-fill-mode: forwards
+}
+
+@keyframes mostrar{
+    form{
+        color: white;
+    }to{
+        color: black;
+    }
+}
