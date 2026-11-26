@@ -4,22 +4,34 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use App\Repository\UsuarioRepositorio;
 use App\Model\Usuario;
-use App\Repository\UsuarioRepository;
 
+final class AuthService
+{
+    public function __construct(private UsuarioRepositorio $usuarios) {}
 
-final class AuthService{
-    public function __construct(private UsuarioRepository $usuarios){}
-
-    public function registrar(string $nombre, string $email, string $clave): Usuario{
-        $usuario = new Usuario{
-            $this-usuarios->siguienteid(),
+    public function registrar(string $nombre, string $email, string $clave): Usuario
+    {
+        if($this->usuarios->buscarPorCorreo($email) !== null){
+            throw new \DomainException('Ese Correo Ya Existe');
+        }
+        $usuario = new Usuario(
+            $this->usuarios->siguienteId(),
             $nombre,
             $email,
             password_hash($clave, PASSWORD_DEFAULT),
             'ROLE_USER'
-        };
+        );
         $this->usuarios->guardar($usuario);
+        return $usuario;
+    }
+
+    public function autemticar(string $email, string $clave): ?Usuario{
+        $usuario = $this->usuarios->buscarPorCorreo($email);
+        if($usuario === null || !password_verify($clave, $usuario->password)) {
+            return null;
+        }
         return $usuario;
     }
 }
