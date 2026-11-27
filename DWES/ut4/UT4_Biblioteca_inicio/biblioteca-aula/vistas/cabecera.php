@@ -9,8 +9,19 @@
 <body class="<?= $tema ?> <?= $formato ?>">
 <header>
     <h1>Biblioteca de aula</h1>
-    <nav><a href="index.php">Catálogo</a></nav>
-    <nav><a href="registro.php">Registro</a></nav>
+    <nav><a href="index.php">Catálogo</a>
+        <?php if($usuarioActual === null): ?>
+            <a href="registro.php"> Crear Cuenta </a>
+            <a href="login.php"> Iniciar Sesion </a>
+            <a href="libro.php"> Crear Libro</a>
+        <?php else: ?>
+            <a href="cuenta.php"> Mi Cuenta </a>
+            <a href="libro.php"> Crear Libro</a>
+            <form method="post" action="logout.php">
+                <button>Cerrar Sesion</button>
+            </form>
+        <?php endif; ?>
+    </nav>
 </header>
 <?php if($aviso !== null):?>
     <p class="aviso"><?= \App\Soporte\e($aviso)?></p>

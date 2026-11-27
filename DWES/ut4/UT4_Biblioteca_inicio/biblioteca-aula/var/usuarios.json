@@ -12,5 +12,12 @@
         "email": "pepe@correo.com",
         "passwordHash": "$2y$12$ozBA4Qg02lwPwRhs5QZg7eIA.kZTQt9mu.769DTPadhD.pJ3Vu0lW",
         "rol": "ROLE_USER"
+    },
+    {
+        "id": 3,
+        "nombre": "manolo",
+        "email": "manolo@correo.com",
+        "passwordHash": "$2y$12$t4LwoYzl398UwWq39TysHeDueybyybhPTBalS8cRoz3Za1L3UFfSu",
+        "rol": "ROLE_USER"
     }
 ]

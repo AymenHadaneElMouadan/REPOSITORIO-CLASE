@@ -27,9 +27,9 @@ final class AuthService
         return $usuario;
     }
 
-    public function autemticar(string $email, string $clave): ?Usuario{
+    public function autenticar(string $email, string $clave): ?Usuario{
         $usuario = $this->usuarios->buscarPorCorreo($email);
-        if($usuario === null || !password_verify($clave, $usuario->password)) {
+        if($usuario === null || !password_verify($clave, $usuario->passwordHash)) {
             return null;
         }
         return $usuario;
